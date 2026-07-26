@@ -1,0 +1,82 @@
+body{
+    margin:0;
+    overflow:hidden;
+    background:black;
+    font-family:Georgia, serif;
+}
+
+#background{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:url("../images/backgrounds/castle-ruins.jpg");
+    background-size:cover;
+    background-position:center;
+    filter:brightness(.35);
+}
+
+#overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        to top,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.2)
+    );
+}
+
+.crawl-container{
+    position:absolute;
+    width:100%;
+    height:100%;
+    perspective:400px;
+    overflow:hidden;
+}
+
+.crawl{
+    position:absolute;
+    bottom:-100%;
+    left:50%;
+    transform:translateX(-50%) rotateX(30deg);
+    transform-origin:50% 100%;
+    width:70%;
+    color:#ffd54f;
+    font-size:2rem;
+    font-weight:bold;
+    text-align:center;
+    white-space:pre-line;
+    animation:crawl 70s linear forwards;
+    text-shadow:0 0 10px black;
+}
+
+@keyframes crawl{
+    0%{
+        bottom:-100%;
+    }
+    100%{
+        bottom:140%;
+    }
+}
+
+#startButton{
+    position:absolute;
+    left:50%;
+    bottom:60px;
+    transform:translateX(-50%);
+    padding:18px 45px;
+    font-size:1.4rem;
+    background:#8b5a2b;
+    color:white;
+    border:none;
+    border-radius:10px;
+    display:none;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#startButton:hover{
+    transform:translateX(-50%) scale(1.1);
+}

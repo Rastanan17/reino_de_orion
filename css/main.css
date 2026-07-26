@@ -1,0 +1,190 @@
+body{
+    overflow-y:auto;
+    overflow-x:hidden;
+    margin:0;
+    font-family:Georgia, serif;
+    background:#1b1a17;
+    color:white;
+}
+
+/* Fondo */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("../images/backgrounds/castle-ruins.jpg");
+    background-size:cover;
+    background-position:center;
+    filter:brightness(.25);
+    z-index:-2;
+}
+
+/* Oscurecer */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    z-index:-1;
+}
+
+.profile{
+    max-width:900px;
+    margin:30px auto;
+    padding:25px;
+    background:rgba(58,45,30,.88);
+    border:3px solid #c49b3d;
+    border-radius:18px;
+    display:flex;
+    gap:20px;
+    box-shadow:0 0 30px rgba(0,0,0,.5);
+}
+
+.avatar img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    border:4px solid gold;
+}
+
+.info{
+    flex:1;
+}
+
+.mission-card{
+    max-width:900px;
+    margin:20px auto;
+    padding:20px;
+    background:rgba(80,60,40,.92);
+    border-radius:15px;
+    border:2px solid #b68a3d;
+}
+
+.xpBar{
+    width:100%;
+    height:22px;
+    background:#333;
+    border-radius:15px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.xpFill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(
+        90deg,
+        gold,
+        orange
+    );
+    transition:.5s;
+}
+
+button{
+    background:#8b5a2b;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:scale(1.05);
+    background:#a66d35;
+}
+
+/* ==========================
+   TÍTULO
+========================== */
+.gameTitle{
+    text-align:center;
+    font-size:2.5rem;
+    color:#ffd86b;
+    text-shadow:2px 2px 8px black;
+    margin-top:20px;
+}
+
+/* ==========================
+   MENÚ PRINCIPAL
+========================== */
+#mainMenu{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.menuButton{
+    background:rgba(75,55,35,.90);
+    border:3px solid #c49b3d;
+    border-radius:18px;
+    padding:25px;
+    font-size:1.2rem;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+}
+
+.menuButton:hover{
+    transform:scale(1.05);
+    background:rgba(110,75,40,.95);
+}
+
+.menuButton span{
+    font-size:3rem;
+}
+
+#content{
+    max-width:1000px;
+    margin:0 auto;
+    padding:20px;
+}
+
+#missions{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    margin-top:40px;
+}
+
+.mission-card h3{
+    margin:10px 0;
+    color:#ffd86b;
+}
+
+.categoria{
+    font-size:1.1rem;
+    margin-bottom:10px;
+}
+
+.icono{
+    font-size:3rem;
+}
+
+.recompensas{
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.progress{
+    width:100%;
+    height:20px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:15px;
+}
+
+.progressFill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#48d96b,#a8ff60);
+    transition:1s;
+}
