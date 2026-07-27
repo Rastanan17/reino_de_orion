@@ -7,11 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
     // Ocultar el juego al iniciar
     document.getElementById("gameScreen").style.display = "none";
     // Actualizar perfil
+    verificarNuevoDia();
     actualizarPerfil();
-});
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-    cargarJugador();
-
 });

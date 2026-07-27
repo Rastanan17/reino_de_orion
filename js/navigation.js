@@ -17,10 +17,6 @@ document
 
 // ----------------------------
 function mostrarMisionesPagina(){
-    content.innerHTML = `
-        <h2>📜 Misiones del Reino</h2>
-        <div id="missions"></div>
-    `;
     mostrarMisiones();
 }
 

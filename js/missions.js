@@ -32,7 +32,12 @@ function guardarMisiones() {
 // ---------------------------------------
 // Mostrar
 // ---------------------------------------
-function mostrarMisiones() {
+function mostrarMisiones(){
+    const content = document.getElementById("content");
+    content.innerHTML = `
+        <h2>📜 Misiones del Reino</h2>
+        <div id="missions"></div>
+    `;
     const contenedor = document.getElementById("missions");
     contenedor.innerHTML = "";
     misiones.forEach(mision => {
@@ -56,7 +61,7 @@ function mostrarMisiones() {
             contenidoBoton = `
                 <button disabled>🏆 Completada</button>
             `;
-        }console.log(mision);
+        }
         tarjeta.innerHTML = `
             <div class="categoria">${mision.categoria}</div>
             <div class="icono">${mision.icono}</div>
@@ -139,4 +144,16 @@ function completarMision(mision) {
 +${mision.xp} XP
 +${mision.oquos} Oquos`
     );
+}
+
+// ---------------------------------------
+// Reiniciar misiones diarias
+// ---------------------------------------
+
+function reiniciarMisionesDiarias() {
+    misiones.forEach(mision => {
+        mision.estado = "disponible";
+        delete mision.inicio;
+    });
+    guardarMisiones();
 }

@@ -13,7 +13,8 @@ const jugadorBase = {
     misionesCompletadas: [],
     logros: [],
     racha: 0,
-    zonasRestauradas: []
+    zonasRestauradas: [],
+    ultimoReinicio: ""
 };
 
 // ---------------------------------------
@@ -89,4 +90,26 @@ function reiniciarJugador() {
     localStorage.removeItem("orionJugador");
     localStorage.removeItem("orion_misiones");
     location.reload();
+}
+
+// ---------------------------------------
+// Obtener fecha de hoy
+// ---------------------------------------
+
+function obtenerFechaHoy() {
+    return new Date().toISOString().split("T")[0];
+}
+
+// ---------------------------------------
+// Verificar cambio de día
+// ---------------------------------------
+
+function verificarNuevoDia() {
+    const jugador = cargarJugador();
+    const hoy = obtenerFechaHoy();
+    if (jugador.ultimoReinicio !== hoy) {
+        reiniciarMisionesDiarias();
+        jugador.ultimoReinicio = hoy;
+        guardarJugador(jugador);
+    }
 }

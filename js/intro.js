@@ -14,7 +14,6 @@ async function iniciar() {
         musica.volume = 0.5; // Ajusta el volumen según tus preferencias
         musica.play()
         .then(() => {
-            console.log("🎵 Música iniciada correctamente");
         })
         .catch((error) => {
             console.error("❌ Error al reproducir:", error);

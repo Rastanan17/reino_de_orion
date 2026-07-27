@@ -3,6 +3,8 @@
 // Interfaz de Usuario
 // =======================================
 function actualizarPerfil() {
+    
+
     const jugador = cargarJugador();
     // Nombre
     document.getElementById("playerName").textContent = jugador.nombre;
@@ -15,9 +17,16 @@ function actualizarPerfil() {
     // XP
     document.getElementById("playerXP").textContent = jugador.xp;
     document.getElementById("playerNextXP").textContent = jugador.xpNecesaria;
+
     // Barra de experiencia
-    const porcentaje = (jugador.xp / jugador.xpNecesaria) * 100;
-    document.getElementById("xpFill").style.width = porcentaje + "%";
+    const porcentaje =
+    (jugador.xp / jugador.xpNecesaria) * 100;
+
+    const barra = document.getElementById("xpFill");
+    barra.style.width = porcentaje + "%";
+    barra.classList.remove("levelUp");
+    void barra.offsetWidth;
+    barra.classList.add("levelUp");
 }
 
 // =======================================
