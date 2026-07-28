@@ -113,3 +113,24 @@ function verificarNuevoDia() {
         guardarJugador(jugador);
     }
 }
+
+// =======================================
+// MAPA DEL REINO
+// =======================================
+
+function cargarMapaGuardado() {
+
+    return JSON.parse(
+        localStorage.getItem("orionMapa") || "null"
+    );
+
+}
+
+function guardarMapa(zonas) {
+
+    localStorage.setItem(
+        "orionMapa",
+        JSON.stringify(zonas)
+    );
+
+}

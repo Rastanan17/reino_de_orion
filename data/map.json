@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "nombre": "Castillo",
+    "icono": "🏰",
+    "imagenRuinas": "images/kingdom/castle_ruins.jpg",
+    "imagenRestaurada": "images/kingdom/castle_restored.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 2,
+    "nombre": "Granja",
+    "icono": "🌾",
+    "imagenRuinas": "images/kingdom/farm_dry.jpg",
+    "imagenRestaurada": "images/kingdom/farm_restored.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 3,
+    "nombre": "Bosque",
+    "icono": "🌳",
+    "imagenRuinas": "images/kingdom/forest_dark.jpg",
+    "imagenRestaurada": "images/kingdom/forest_restored.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 4,
+    "nombre": "Santuario",
+    "icono": "🛕",
+    "imagenRuinas": "images/kingdom/sanctuary.jpg",
+    "imagenRestaurada": "images/kingdom/sanctuary.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 5,
+    "nombre": "Observatorio",
+    "icono": "🔭",
+    "imagenRuinas": "images/kingdom/observatory_ruins.jpg",
+    "imagenRestaurada": "images/kingdom/observatory_restored.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 6,
+    "nombre": "Aldea",
+    "icono": "🏘️",
+    "imagenRuinas": "images/kingdom/village_ruins.jpg",
+    "imagenRestaurada": "images/kingdom/village_restored.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 7,
+    "nombre": "Mercado",
+    "icono": "🛒",
+    "imagenRuinas": "images/kingdom/market_empty.jpg",
+    "imagenRestaurada": "images/kingdom/market_full.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  },
+  {
+    "id": 8,
+    "nombre": "Biblioteca",
+    "icono": "📚",
+    "imagenRuinas": "images/kingdom/library_ruins.jpg",
+    "imagenRestaurada": "images/kingdom/library_restored.jpg",
+    "progreso": 0,
+    "objetivo": 100
+  }
+]

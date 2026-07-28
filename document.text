@@ -538,3 +538,10 @@ Cuando apruebes:
 suma XP,
 suma Oquos,
 mejora el Reino.
+
+----------
+
+localStorage.clear();
+location.reload();
+
+----------

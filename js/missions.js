@@ -8,33 +8,21 @@ let misiones = [];
 // Cargar misiones
 // ---------------------------------------
 async function cargarMisiones() {
-
-    console.log("1. Entró a cargarMisiones");
-
+    //console.log("1. Entró a cargarMisiones");
     const guardadas = localStorage.getItem("orion_misiones");
-
-    console.log("2. LocalStorage:", guardadas);
-
+    //console.log("2. LocalStorage:", guardadas);
     if (guardadas) {
         misiones = JSON.parse(guardadas);
     }
-
-    console.log("3. Misiones después del localStorage:", misiones);
-
+    //console.log("3. Misiones después del localStorage:", misiones);
     if (!misiones || misiones.length === 0) {
-
-        console.log("4. Leyendo missions.json...");
-
+        //console.log("4. Leyendo missions.json...");
         const respuesta = await fetch("data/missions.json");
-
         misiones = await respuesta.json();
-
-        console.log("5. JSON cargado:", misiones);
-
+        //console.log("5. JSON cargado:", misiones);
         guardarMisiones();
     }
-
-    console.log("6. Total de misiones:", misiones.length);
+    //console.log("6. Total de misiones:", misiones.length);
 }
 
 // ---------------------------------------
@@ -151,6 +139,13 @@ function completarMision(mision) {
         mision.xp,
         mision.oquos
     );
+    restaurarZona(
+        mision.zona,
+        mision.restauracion
+    );
+    if(document.getElementById("missions") === null){
+    mostrarMapa();
+    }
     // desbloquearZona(
     //     mision.zona
     // );

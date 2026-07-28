@@ -33,6 +33,19 @@ function actualizarPerfil() {
 // Mensaje del Reino
 // (lo usaremos para reemplazar los alert())
 // =======================================
-function mostrarMensaje(titulo, mensaje) {
-    alert(`${titulo}\n\n${mensaje}`);
+function mostrarMensaje(titulo, mensaje){
+    document.getElementById("modalTitulo").textContent = titulo;
+    document.getElementById("modalTexto").innerHTML =
+        mensaje.replace(/\n/g,"<br>");
+    document
+        .getElementById("modal")
+        .classList.remove("oculto");
+    document
+        .getElementById("cerrarModal")
+        .addEventListener("click",()=>{
+    document
+        .getElementById("modal")
+        .classList.add("oculto");
+
+});
 }

@@ -6,11 +6,12 @@
     "titulo": "Haz la cama",
     "descripcion": "La habitación del castillo necesita volver a estar ordenada.",
     "icono": "🛏️",
-    "xp": 15,
-    "oquos": 10,
+    "xp": 10,
+    "oquos": 5,
     "duracion": 180,
     "estado": "disponible",
-    "dificultad": "facil"
+    "dificultad": "facil",
+    "restauracion": 5
   },
   {
     "id": 2,
@@ -19,11 +20,12 @@
     "titulo": "Come una fruta",
     "descripcion": "Los árboles del Reino necesitan volver a dar frutos.",
     "icono": "🍎",
-    "xp": 20,
-    "oquos": 10,
+    "xp": 15,
+    "oquos": 5,
     "duracion": 300,
     "estado": "disponible",
-    "dificultad": "facil"
+    "dificultad": "facil",
+    "restauracion": 5
   },
   {
     "id": 3,
@@ -32,11 +34,12 @@
     "titulo": "Cepíllate los dientes",
     "descripcion": "Los caballeros cuidan su sonrisa antes de partir a una aventura.",
     "icono": "🪥",
-    "xp": 15,
-    "oquos": 10,
+    "xp": 10,
+    "oquos": 5,
     "duracion": 180,
     "estado": "disponible",
-    "dificultad": "facil"
+    "dificultad": "facil",
+    "restauracion": 5
   },
   {
     "id": 4,
@@ -45,11 +48,12 @@
     "titulo": "Ayuda a poner la mesa",
     "descripcion": "Los habitantes del Reino necesitan preparar el gran banquete.",
     "icono": "🍽️",
-    "xp": 20,
-    "oquos": 15,
+    "xp": 15,
+    "oquos": 10,
     "duracion": 300,
     "estado": "disponible",
-    "dificultad": "media"
+    "dificultad": "media",
+    "restauracion": 5
   },
   {
     "id": 5,
@@ -58,11 +62,12 @@
     "titulo": "Levanta la mesa",
     "descripcion": "Después del banquete, todo debe volver a quedar limpio.",
     "icono": "🧽",
-    "xp": 20,
-    "oquos": 15,
+    "xp": 15,
+    "oquos": 10,
     "duracion": 300,
     "estado": "disponible",
-    "dificultad": "media"
+    "dificultad": "media",
+    "restauracion": 5
   },
   {
     "id": 6,
@@ -71,11 +76,12 @@
     "titulo": "Lee durante 10 minutos",
     "descripcion": "Los antiguos libros del Reino esconden grandes conocimientos.",
     "icono": "📖",
-    "xp": 30,
-    "oquos": 20,
+    "xp": 20,
+    "oquos": 15,
     "duracion": 600,
     "estado": "disponible",
-    "dificultad": "media"
+    "dificultad": "media",
+    "restauracion": 5
   },
   {
     "id": 7,
@@ -84,11 +90,12 @@
     "titulo": "Aprende una curiosidad del Universo",
     "descripcion": "Cada nuevo descubrimiento ilumina las estrellas del Reino.",
     "icono": "🌌",
-    "xp": 25,
-    "oquos": 20,
+    "xp": 20,
+    "oquos": 15,
     "duracion": 300,
     "estado": "disponible",
-    "dificultad": "media"
+    "dificultad": "media",
+    "restauracion":5
   },
   {
     "id": 8,
@@ -97,11 +104,12 @@
     "titulo": "Resuelve 5 cuentas",
     "descripcion": "La Academia necesita nuevos sabios que dominen los números.",
     "icono": "➕",
-    "xp": 30,
-    "oquos": 20,
+    "xp": 20,
+    "oquos": 15,
     "duracion": 600,
     "estado": "disponible",
-    "dificultad": "media"
+    "dificultad": "media",
+    "restauracion":5
   },
   {
     "id": 9,
@@ -110,11 +118,12 @@
     "titulo": "Ordena tus juguetes",
     "descripcion": "El Bosque vuelve a respirar cuando todo está en su lugar.",
     "icono": "🧸",
-    "xp": 25,
-    "oquos": 20,
+    "xp": 20,
+    "oquos": 15,
     "duracion": 600,
     "estado": "disponible",
-    "dificultad": "media"
+    "dificultad": "media",
+    "restauracion":5
   },
   {
     "id": 10,
@@ -123,10 +132,25 @@
     "titulo": "Aprende un versículo bíblico",
     "descripcion": "La sabiduría fortalece el corazón de los exploradores.",
     "icono": "📜",
-    "xp": 40,
-    "oquos": 30,
+    "xp": 25,
+    "oquos": 20,
     "duracion": 600,
     "estado": "disponible",
-    "dificultad": "dificil"
+    "dificultad": "dificil",
+    "restauracion":5
+  },
+  {
+    "id": 11,
+    "zona": "Granja",
+    "categoria": "🌾 Granja",
+    "titulo": "Come una verdura",
+    "descripcion": "Los árboles del Reino necesitan volver a dar verduras.",
+    "icono": "🥗",
+    "xp": 15,
+    "oquos": 5,
+    "duracion": 300,
+    "estado": "disponible",
+    "dificultad": "dificil",
+    "restauracion":5
   }
 ]

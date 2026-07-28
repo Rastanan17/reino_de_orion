@@ -9,4 +9,6 @@ window.addEventListener("DOMContentLoaded", () => {
     // Actualizar perfil
     verificarNuevoDia();
     actualizarPerfil();
+    cargarMapa();
+    cargarRecompensas();
 });

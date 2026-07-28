@@ -21,19 +21,13 @@ function mostrarMisionesPagina(){
 }
 
 // ----------------------------
-function mostrarMapa(){
-    content.innerHTML = `
-        <h2>🗺️ Reino de Orión</h2>
-        <p>El mapa estará disponible muy pronto...</p>
-    `;
+function mostrarMapa() {
+    mostrarMapaReino();
 }
 
 // ----------------------------
 function mostrarMercado(){
-    content.innerHTML = `
-        <h2>🛒 Mercado</h2>
-        <p>Aquí podrás gastar tus Oquos.</p>
-    `;
+    mostrarMercadoDelReino();
 }
 
 // ----------------------------
