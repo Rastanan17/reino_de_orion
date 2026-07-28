@@ -17,7 +17,6 @@ document
 
 // ----------------------------
 function mostrarMisionesPagina(){
-    const content = document.getElementById("content");
     mostrarMisiones();
 }
 
