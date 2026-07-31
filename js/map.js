@@ -9,11 +9,8 @@ async function cargarMapa() {
     const guardado = cargarMapaGuardado();
 
     if (guardado) {
-
         zonas = guardado;
-
         return;
-
     }
 
     const respuesta = await fetch("data/map.json");
@@ -24,49 +21,47 @@ async function cargarMapa() {
 
 }
 
+// =======================================
+
 function mostrarMapaReino() {
 
     const content = document.getElementById("content");
 
-    content.innerHTML = "<h2>🗺️ Reino de Orión</h2>";
+    content.innerHTML = `
+        <h2>🗺️ Reino de Orión</h2>
+        <div id="kingdomMap"></div>
+    `;
+
+    const mapa = document.getElementById("kingdomMap");
 
     zonas.forEach(zona => {
 
-        const porcentaje = Math.floor(
-            zona.progreso / zona.objetivo * 100
-        );
+        const div = document.createElement("div");
 
-        const imagen =
-            zona.progreso >= zona.objetivo
-                ? zona.imagenRestaurada
-                : zona.imagenRuinas;
+        div.className = "zone";
 
-        content.innerHTML += `
+        div.style.left = zona.x + "%";
+        div.style.top = zona.y + "%";
 
-            <div class="zone-card">
-
-                <img src="${imagen}">
-
-                <h3>${zona.icono} ${zona.nombre}</h3>
-
-                <div class="zoneBar">
-
-                    <div
-                        class="zoneFill"
-                        style="width:${porcentaje}%">
-                    </div>
-
-                </div>
-
-                <p>${porcentaje}% restaurado</p>
-
+        div.innerHTML = `
+            <div class="zoneSprite">
+                <img src="${zona.sprite}" alt="${zona.nombre}">
             </div>
 
+            <div class="zoneName">
+                ${zona.nombre}
+            </div>
         `;
+
+        div.onclick = () => abrirZona(zona.nombre);
+
+        mapa.appendChild(div);
 
     });
 
 }
+
+// =======================================
 
 function restaurarZona(nombreZona, cantidad = 10){
 
@@ -79,26 +74,52 @@ function restaurarZona(nombreZona, cantidad = 10){
     zona.progreso += cantidad;
 
     if(zona.progreso > zona.objetivo){
-
         zona.progreso = zona.objetivo;
-
     }
 
     guardarMapa(zonas);
 
 }
 
-function restaurarZona(nombreZona, puntos){
+// =======================================
 
-    const zona = zonas.find(z => z.nombre === nombreZona);
+function abrirZona(nombre){
 
-    if(!zona) return;
+    console.log("Zona seleccionada:", nombre);
 
-    zona.progreso += puntos;
+    switch(nombre){
 
-    if(zona.progreso > zona.objetivo){
-        zona.progreso = zona.objetivo;
+        case "Granja":
+            alert("Entrando a la Granja 🌾");
+            break;
+
+        case "Bosque":
+            alert("Entrando al Bosque 🌲");
+            break;
+
+        case "Castillo":
+            alert("Entrando al Castillo 🏰");
+            break;
+
+        default:
+            alert("Entrando a " + nombre);
+
     }
 
-    guardarMapa();
+}
+
+// =======================================
+
+function obtenerEstadoZona(zona){
+
+    if(zona.progreso < 40){
+        return "ruins";
+    }
+
+    if(zona.progreso < 80){
+        return "construction";
+    }
+
+    return "restored";
+
 }

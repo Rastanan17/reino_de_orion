@@ -155,10 +155,16 @@ button:hover{
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:20px;
+    position:sticky;   /* Fija el elemento en la pantalla */
+    top: 0;            /* Lo pega a la parte superior */
+    left: 0;           /* Lo alinea a la izquierda */
+    width: 100%;       /* Hace que ocupe todo el ancho */
+    z-index: 1000;     /* Asegura que quede por encima de otros elementos */
+    background-color: #4c3824e6;
 }
 
 .menuButton{
-    background:rgba(75,55,35,.90);
+    background:#4c3824e6;
     border:3px solid #c49b3d;
     border-radius:18px;
     padding:25px;

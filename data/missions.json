@@ -43,8 +43,8 @@
   },
   {
     "id": 4,
-    "zona": "Comedor",
-    "categoria": "🍽️ Comedor",
+    "zona": "Aldea",
+    "categoria": "🍽️ Aldea",
     "titulo": "Ayuda a poner la mesa",
     "descripcion": "Los habitantes del Reino necesitan preparar el gran banquete.",
     "icono": "🍽️",
@@ -57,8 +57,8 @@
   },
   {
     "id": 5,
-    "zona": "Comedor",
-    "categoria": "🍽️ Comedor",
+    "zona": "Aldea",
+    "categoria": "🍽️ Aldea",
     "titulo": "Levanta la mesa",
     "descripcion": "Después del banquete, todo debe volver a quedar limpio.",
     "icono": "🧽",
@@ -99,8 +99,8 @@
   },
   {
     "id": 8,
-    "zona": "Academia",
-    "categoria": "➕ Academia",
+    "zona": "Biblioteca",
+    "categoria": "📚 Biblioteca",
     "titulo": "Resuelve 5 cuentas",
     "descripcion": "La Academia necesita nuevos sabios que dominen los números.",
     "icono": "➕",
@@ -127,8 +127,8 @@
   },
   {
     "id": 10,
-    "zona": "Templo",
-    "categoria": "⛪ Templo",
+    "zona": "Santuario",
+    "categoria": "⛪ Santuario",
     "titulo": "Aprende un versículo bíblico",
     "descripcion": "La sabiduría fortalece el corazón de los exploradores.",
     "icono": "📜",

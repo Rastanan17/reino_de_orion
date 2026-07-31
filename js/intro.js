@@ -1,44 +1,68 @@
 // =======================================
-// REINO DE ORIÓN
-// Introducción
+// REINO DE ORIÓN - Introducción
 // =======================================
-async function iniciar() {
-    // Cargar historia
-    const respuesta = await fetch("data/history.json");
-    const historia = await respuesta.json();
-    // Mostrar texto
-    const crawl = document.getElementById("crawl");
-    crawl.innerHTML = historia.paragraphs.join("<br><br>");
-    // Música
-    const musica = document.getElementById("introMusic");
-        musica.volume = 0.5; // Ajusta el volumen según tus preferencias
-        musica.play()
-        .then(() => {
-        })
-        .catch((error) => {
-            console.error("❌ Error al reproducir:", error);
-        });
-    // Mostrar botón al terminar la historia
-    setTimeout(() => {
-        document.getElementById("startButton").style.display = "block";
-    }, 5000);
+const MODO_DESARROLLO = false;
+
+// ---------------------------------------
+// Cargar historia
+// ---------------------------------------
+async function cargarHistoria() {
+    try {
+        const respuesta = await fetch("data/history.json");
+        const historia = await respuesta.json();
+        document.getElementById("crawl").innerHTML =
+            historia.paragraphs.join("<br><br>");
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-// =======================================
+// ---------------------------------------
+// Iniciar intro
+// ---------------------------------------
+function iniciarIntro() {
+    document.getElementById("btnComenzar").style.display = "none";
+    const musica = document.getElementById("introMusic");
+    musica.volume = 0.3;
+    musica.play();
+    document.getElementById("crawl").classList.add("start-crawl");
+}
+
+// ---------------------------------------
 // Entrar al Reino
-// =======================================
-document.getElementById("startButton").addEventListener("click", () => {
-    // Detener música
-    document.getElementById("introMusic").pause();
-    // Ocultar introducción
+// ---------------------------------------
+async function entrarAlReino() {
+    const musica = document.getElementById("introMusic");
+    musica.pause();
     document.getElementById("introScreen").style.display = "none";
-    // Mostrar el Reino
     document.getElementById("gameScreen").style.display = "block";
-    // Actualizar datos
     actualizarPerfil();
-    cargarMisiones().then(() => {
+    await cargarMisiones();
+    await cargarMapa();
+    await cargarRecompensas();
+    await cargarSistemaPergaminos();
+    mostrarMisionesPagina();
+}
+
+// ---------------------------------------
+// Inicio
+// ---------------------------------------
+document.addEventListener("DOMContentLoaded", async ()=>{
+    if(MODO_DESARROLLO){
+        document.getElementById("introScreen").style.display="none";
+        document.getElementById("gameScreen").style.display="block";
+        actualizarPerfil();
+        await cargarMisiones();
+        await cargarMapa();
+        await cargarRecompensas();
+        await cargarSistemaPergaminos();
         mostrarMisionesPagina();
-    });
+        return;
+    }
+    await cargarHistoria();
+    document.getElementById("btnComenzar").addEventListener("click", iniciarIntro);
+    document.getElementById("crawl").addEventListener("animationend", ()=>{
+            document.getElementById("startButton").style.display="inline-block";
+        });
+    document.getElementById("startButton").addEventListener("click", entrarAlReino);
 });
-// Iniciar la introducción
-iniciar();

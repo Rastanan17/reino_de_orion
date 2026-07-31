@@ -7,11 +7,14 @@
         <link rel="stylesheet" href="css/intro.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/map.css">
+        <link rel="stylesheet" href="css/kingdom.css">
         <link rel="stylesheet" href="css/missions.css">
+        <link rel="stylesheet" href="css/store.css">
+        <link rel="stylesheet" href="css/pergamino.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
-        <link rel="icon" href="images/kingdom-icon.png" type="image/x-icon">
+        <link rel="icon" href="images/castle.jpg" type="image/x-icon">
     </head>
     <body>
         <section id="introScreen">
@@ -20,13 +23,11 @@
             <div class="crawl-container">
                 <div id="crawl" class="crawl"></div>
             </div>
-            <button id="startButton">
-                ⚔️ Comenzar la aventura
-            </button>
-            <audio
-                id="introMusic"
-                src="sounds/intro.mp3">
-            </audio>
+            <div class="intro-controls">
+                <button id="btnComenzar">⚔️ Comenzar Aventura</button>
+                <button id="startButton">🏰 Ir al Reino</button>
+            </div>
+            <audio id="introMusic" src="sounds/intro.mp3"></audio>
         </section>
         <section id="gameScreen" style="display:none;">
             <header class="profile">
@@ -35,64 +36,32 @@
                     <h2 id="playerName">Orión</h2>
                 </div>
                 <div class="info">
-                    <h1>
-                        ⚔️ Nivel
-                        <span id="playerLevel">1</span>
-                            ·
-                        <span id="playerRank">
-                            Explorador
-                        </span>
-                    </h1>
-                    <h3>
-                        🪙
-                        <span id="playerCoins">0</span>
-                        Oquos
-                    </h3>
-                    <div class="xpBar">
-                        <div id="xpFill" class="xpFill"></div>
-                    </div>
-                    <p class="xpText">
-                        ⭐
-                        <span id="playerXP">0</span>
-                        /
-                        <span id="playerNextXP">100</span>
-                        XP
-                    </p>
+                    <h1>⚔️ Nivel <span id="playerLevel">1 </span>· <span id="playerRank"> Explorador</span></h1>
+                    <h3>💰 <span id="playerCoins">0 </span> Oquos</h3>
+                    <div class="xpBar"><div id="xpFill" class="xpFill"></div></div>
+                    <p class="xpText">⭐<span id="playerXP">0</span>/<span id="playerNextXP">100</span>XP</p>
                 </div>
             </header>
             <nav id="mainMenu">
-                <button id="btnMapa">
-                    🗺️
-                    <span>Mapa</span>
-                </button>
-                <button id="btnMisiones">
-                    📜
-                    <span>Misiones</span>
-                </button>
-                <button id="btnMercado">
-                    🛒
-                    <span>Mercado</span>
-                </button>
-                <button id="btnLogros">
-                    🏆
-                    <span>Logros</span>
-                </button>
+                <button id="btnMapa">🗺️<span>Mapa</span></button>
+                <button id="btnMisiones">📜<span>Misiones</span></button>
+                <button id="btnMercado">🛒<span>Mercado</span></button>
+                <button id="btnLogros">🏆<span>Logros</span></button>
             </nav>
-            <main id="content">
-              
-            </main>
+            <main id="content"></main>
         </section>
         <div id="modal" class="modal oculto">
             <div class="modalBox">
                 <h2 id="modalTitulo"></h2>
                 <p id="modalTexto"></p>
-                <button id="cerrarModal">
-                    Continuar
-                </button>
+                <button id="cerrarModal">Continuar</button>
             </div>
         </div>
-        <script src="js/rewards.js"></script>
+        <script src="js/pergaminos.js"></script>
+        <script src="service-worker.js"></script>
+        <script src="js/calendar.js"></script>
         <script src="js/parent.js"></script>
+        <script src="js/pages.js"></script>
         <script src="js/storage.js"></script>
         <script src="js/ui.js"></script>
         <script src="js/missions.js"></script>

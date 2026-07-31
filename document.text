@@ -538,6 +538,51 @@ Cuando apruebes:
 suma XP,
 suma Oquos,
 mejora el Reino.
+----------
+
+1. el filtro ese me gusta: Castillo, Aldea, Observatorio, Santuario, Granja, Bosque, Biblioteca, mercado.
+
+2. eso del mapa me gusta mas, un div verde grande donde esten solametne los iconos repartidos por el div. cuando pase el cursor resalte y diga el nombre en pequeueño debajo. al hacer click, se abre una ventana nueva.
+
+3. un div para cada zona con la imagen de fondo "images/kingdom/[zona_ruins].jpg" y una lista como dijiste: 🌾 GRANJA
+
+Completadas
+
+✔ Comer una fruta
+✔ Regar las plantas
+✔ Ordenar juguetes
+
+Pendientes
+
+○ Alimentar animales
+○ Barrer patio
+○ Limpiar herramientas
+
+Progreso
+
+██████░░░░ 60%
+
+4. mostrar porcentaje por zona..
+para las misiones:
+🟢 completada
+
+🟡 a medias
+
+🔴 sin empezar
+
+para la zona:
+🌾Granja
+██████░░░░ 75%
+
+5. la zona al 100%
+foto nueva de fondo "image/kingdom/[zona_restored].jpg"
+🏆 Zona completada
++150 XP
++80 Oquos
+Nuevo título:🌾 Guardián de la Granja
+
+6. contador de misiones por zona.
+
 
 ----------
 

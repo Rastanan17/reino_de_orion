@@ -84,3 +84,32 @@
     margin-top:0;
     color:gold;
 }
+
+.mission-filter{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    margin-bottom:20px;
+    padding-bottom:8px;
+}
+
+.filter-btn{
+    border:none;
+    padding:10px 18px;
+    border-radius:25px;
+    background:#2f3f4f;
+    color:white;
+    cursor:pointer;
+    transition:.25s;
+    white-space:nowrap;
+}
+
+.filter-btn:hover{
+    background:#46627d;
+}
+
+.filter-btn.active{
+    background:#f4b400;
+    color:#222;
+    font-weight:bold;
+}

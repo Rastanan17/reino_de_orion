@@ -24,7 +24,7 @@
     "id":4,
     "nombre":"Helado.",
     "icono":"🍦",
-    "precio":100,
+    "precio":200,
     "estado":"disponible"
   },
   {
@@ -38,7 +38,7 @@
     "id":6,
     "nombre":"Galletitas Especiales.",
     "icono":"🍪",
-    "precio":80,
+    "precio":100,
     "estado":"disponible"
   },
   {
@@ -52,14 +52,14 @@
     "id":8,
     "nombre":"Paseo por la Plaza.",
     "icono":"⚽",
-    "precio":120,
+    "precio":250,
     "estado":"disponible"
   },
   {
     "id":9,
     "nombre":"Paseo con la bici.",
     "icono":"🚲",
-    "precio":150,
+    "precio":250,
     "estado":"disponible"
   }
 ]

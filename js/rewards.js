@@ -1,18 +1,11 @@
-// =======================================
-// MERCADO DEL REINO
-// =======================================
-
 let recompensas = [];
 
 // ---------------------------------------
 // Cargar recompensas
 // ---------------------------------------
 async function cargarRecompensas(){
-
     const respuesta = await fetch("data/rewards.json");
-
     recompensas = await respuesta.json();
-
 }
 
 // ---------------------------------------
@@ -24,7 +17,6 @@ function mostrarMercadoDelReino(){
 
     content.innerHTML = `
         <h2>🛒 Mercado del Reino</h2>
-
         <div id="market"></div>
     `;
 
@@ -37,22 +29,14 @@ function mostrarMercadoDelReino(){
         card.className = "mission-card";
 
         card.innerHTML = `
-            <div class="icono">
-                ${item.icono}
-            </div>
+            <div class="icono">${item.icono} </div>
 
             <h3>${item.nombre}</h3>
 
-            <p>
-
-                💰 ${item.precio} Oquos
-
-            </p>
+            <p>💰 ${item.precio} Oquos</p>
 
             <button onclick="comprarRecompensa(${item.id})">
-
                 Comprar
-
             </button>
         `;
 
@@ -64,24 +48,48 @@ function mostrarMercadoDelReino(){
 
 function comprarRecompensa(id){
 
-    const jugador = cargarJugador();
+    const recompensa = recompensas.find(r => r.id === id);
 
+    mostrarPergamino(recompensa);
+
+}
+
+/*function comprarRecompensa(id){
+    const jugador = cargarJugador();
     const recompensa = recompensas.find(r=>r.id===id);
+    if(!recompensa) return;
+    if(jugador.oquos < recompensa.precio){
+       mostrarMensaje(
+            "💰 Oquos insuficientes",
+            "Necesitas más Oquos."
+        );
+        return;
+    }
+    jugador.oquos -= recompensa.precio;
+    guardarJugador(jugador);
+    actualizarPerfil();
+    mostrarMensaje(
+        "🎉 Compra realizada",
+        `${recompensa.icono}
+        ${recompensa.nombre}
+        ha sido comprada.`
+    );
+}*/
+
+function finalizarCompra(recompensa){
+
+    const jugador = cargarJugador();
 
     if(!recompensa) return;
 
     if(jugador.oquos < recompensa.precio){
 
         mostrarMensaje(
-
-            "🪙 Oquos insuficientes",
-
+            "💰 Oquos insuficientes",
             "Necesitas más Oquos."
-
         );
 
         return;
-
     }
 
     jugador.oquos -= recompensa.precio;
@@ -91,15 +99,8 @@ function comprarRecompensa(id){
     actualizarPerfil();
 
     mostrarMensaje(
-
         "🎉 Compra realizada",
-
-        `${recompensa.icono}
-
-${recompensa.nombre}
-
-ha sido comprada.`
-
+        `${recompensa.icono} ${recompensa.nombre} ha sido comprada.`
     );
 
 }

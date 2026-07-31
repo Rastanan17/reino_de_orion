@@ -59,9 +59,14 @@ function obtenerRango(nivel) {
 // Dar recompensa
 // ---------------------------------------
 function sumarRecompensa(xp, oquos) {
+
+    console.log("RECIBIDO -> XP:", xp, "Oquos:", oquos);
+
     const jugador = cargarJugador();
+
     jugador.xp += xp;
     jugador.oquos += oquos;
+
     while (jugador.xp >= jugador.xpNecesaria) {
         jugador.xp -= jugador.xpNecesaria;
         jugador.nivel++;
@@ -95,7 +100,6 @@ function reiniciarJugador() {
 // ---------------------------------------
 // Obtener fecha de hoy
 // ---------------------------------------
-
 function obtenerFechaHoy() {
     return new Date().toISOString().split("T")[0];
 }
@@ -103,7 +107,6 @@ function obtenerFechaHoy() {
 // ---------------------------------------
 // Verificar cambio de día
 // ---------------------------------------
-
 function verificarNuevoDia() {
     const jugador = cargarJugador();
     const hoy = obtenerFechaHoy();
@@ -117,20 +120,15 @@ function verificarNuevoDia() {
 // =======================================
 // MAPA DEL REINO
 // =======================================
-
 function cargarMapaGuardado() {
-
     return JSON.parse(
         localStorage.getItem("orionMapa") || "null"
     );
-
 }
 
 function guardarMapa(zonas) {
-
     localStorage.setItem(
         "orionMapa",
         JSON.stringify(zonas)
     );
-
 }

@@ -2,18 +2,11 @@
 // NAVEGACIÓN DEL REINO
 // ===================================
 const content = document.getElementById("content");
+document.getElementById("btnMisiones").addEventListener("click", mostrarMisionesPagina);
 document
-.getElementById("btnMisiones")
-.addEventListener("click", mostrarMisionesPagina);
-document
-.getElementById("btnMapa")
-.addEventListener("click", mostrarMapa);
-document
-.getElementById("btnMercado")
-.addEventListener("click", mostrarMercado);
-document
-.getElementById("btnLogros")
-.addEventListener("click", mostrarLogros);
+    .getElementById("btnMapa")
+    .addEventListener("click", mostrarMapaReino);document.getElementById("btnMercado").addEventListener("click", mostrarMercado);
+document.getElementById("btnLogros").addEventListener("click", mostrarLogros);
 
 // ----------------------------
 function mostrarMisionesPagina(){

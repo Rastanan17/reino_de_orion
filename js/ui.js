@@ -3,8 +3,6 @@
 // Interfaz de Usuario
 // =======================================
 function actualizarPerfil() {
-    
-
     const jugador = cargarJugador();
     // Nombre
     document.getElementById("playerName").textContent = jugador.nombre;
@@ -19,9 +17,7 @@ function actualizarPerfil() {
     document.getElementById("playerNextXP").textContent = jugador.xpNecesaria;
 
     // Barra de experiencia
-    const porcentaje =
-    (jugador.xp / jugador.xpNecesaria) * 100;
-
+    const porcentaje = (jugador.xp / jugador.xpNecesaria) * 100;
     const barra = document.getElementById("xpFill");
     barra.style.width = porcentaje + "%";
     barra.classList.remove("levelUp");
@@ -35,17 +31,9 @@ function actualizarPerfil() {
 // =======================================
 function mostrarMensaje(titulo, mensaje){
     document.getElementById("modalTitulo").textContent = titulo;
-    document.getElementById("modalTexto").innerHTML =
-        mensaje.replace(/\n/g,"<br>");
-    document
-        .getElementById("modal")
-        .classList.remove("oculto");
-    document
-        .getElementById("cerrarModal")
-        .addEventListener("click",()=>{
-    document
-        .getElementById("modal")
-        .classList.add("oculto");
-
-});
+    document.getElementById("modalTexto").innerHTML = mensaje.replace(/\n/g,"<br>");
+    document.getElementById("modal").classList.remove("oculto");
+    document.getElementById("cerrarModal").addEventListener("click",()=>{
+        document.getElementById("modal").classList.add("oculto");
+    });
 }
