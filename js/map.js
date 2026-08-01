@@ -4,14 +4,17 @@
 
 let zonas = [];
 
-async function cargarMapa() {
+async function cargarMapa(){
 
     const guardado = cargarMapaGuardado();
 
-    if (guardado) {
+    if(guardado && guardado.length > 0){
+
         zonas = guardado;
+
         return;
     }
+
 
     const respuesta = await fetch("data/map.json");
 
@@ -28,7 +31,7 @@ function mostrarMapaReino() {
     const content = document.getElementById("content");
 
     content.innerHTML = `
-        <h2>🗺️ Reino de Orión</h2>
+        <h2>🗺️ Reino de Mírrafen</h2>
         <div id="kingdomMap"></div>
     `;
 

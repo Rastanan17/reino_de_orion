@@ -1,9 +1,16 @@
 // =======================================
-// REINO DE ORIÓN
+// REINO DE MÍRRAFEN
+// Archivo principal
+// =======================================
 // Sistema de almacenamiento
 // =======================================
-const jugadorBase = {
-    nombre: "Orión",
+// Sistema de almacenamiento
+// =======================================
+const perfilBase = {
+    id: "",
+    nombre: "",
+    edad: 0,
+    foto: "default.png",
     nivel: 1,
     xp: 0,
     xpNecesaria: 100,
@@ -14,28 +21,86 @@ const jugadorBase = {
     logros: [],
     racha: 0,
     zonasRestauradas: [],
-    ultimoReinicio: ""
+    ultimoReinicio: "",
+    ultimoIngreso: "",
+    mapa:[],
+    pergaminos:[],
+    compensacionPendiente:false
 };
 
-// ---------------------------------------
-// Cargar jugador
-// ---------------------------------------
-function cargarJugador() {
-    const datos = localStorage.getItem("orionJugador");
-    if (datos) {
-        return JSON.parse(datos);
-    }
-    guardarJugador(jugadorBase);
-    return { ...jugadorBase };
+function crearPerfil(id,nombre,avatar){
+
+    let perfiles = JSON.parse(
+        localStorage.getItem("perfiles")
+    ) || {};
+
+    perfiles[id] = {
+        ...perfilBase,
+        id,
+        nombre,
+        avatar
+    };
+
+    localStorage.setItem(
+        "perfiles",
+        JSON.stringify(perfiles)
+    );
 }
 
+// =======================================
+// PERFIL ACTIVO
+// =======================================
+
+function obtenerPerfilActivo(){
+
+    return localStorage.getItem("perfilActivo");
+}
+
+
 // ---------------------------------------
-// Guardar jugador
+// Cargar jugador actual
 // ---------------------------------------
-function guardarJugador(datos) {
+
+function cargarJugador(){
+
+    const id = obtenerPerfilActivo();
+
+    if(!id){
+        return null;
+    }
+
+
+    const perfiles = JSON.parse(
+        localStorage.getItem("perfiles")
+    ) || {};
+
+
+    return perfiles[id] || null;
+}
+
+
+// ---------------------------------------
+// Guardar jugador actual
+// ---------------------------------------
+
+function guardarJugador(datos){
+
+    const id = obtenerPerfilActivo();
+
+    if(!id) return;
+
+
+    const perfiles = JSON.parse(
+        localStorage.getItem("perfiles")
+    ) || {};
+
+
+    perfiles[id] = datos;
+
+
     localStorage.setItem(
-        "orionJugador",
-        JSON.stringify(datos)
+        "perfiles",
+        JSON.stringify(perfiles)
     );
 }
 
@@ -46,7 +111,7 @@ function obtenerRango(nivel) {
     if (nivel >= 10) return "Guardián Legendario";
     if (nivel >= 9) return "Héroe del Reino";
     if (nivel >= 8) return "Protector Supremo";
-    if (nivel >= 7) return "Caballero de Orión";
+    if (nivel >= 7) return "Caballero de Mírrafen";
     if (nivel >= 6) return "Sabio del Reino";
     if (nivel >= 5) return "Maestro Constructor";
     if (nivel >= 4) return "Guardián";
@@ -64,17 +129,32 @@ function sumarRecompensa(xp, oquos) {
 
     const jugador = cargarJugador();
 
+    if(!jugador) return;
+
+
     jugador.xp += xp;
+
     jugador.oquos += oquos;
 
+
     while (jugador.xp >= jugador.xpNecesaria) {
+
         jugador.xp -= jugador.xpNecesaria;
+
         jugador.nivel++;
+
         jugador.xpNecesaria += 50;
+
     }
+
+
     jugador.rango = obtenerRango(jugador.nivel);
+
+
     guardarJugador(jugador);
-    console.log(cargarJugador());
+
+    actualizarPerfil();
+
 }
 
 // ---------------------------------------
@@ -91,10 +171,12 @@ function desbloquearZona(zona) {
 // ---------------------------------------
 // Reiniciar partida
 // ---------------------------------------
-function reiniciarJugador() {
-    localStorage.removeItem("orionJugador");
-    localStorage.removeItem("orion_misiones");
+function reiniciarJugador(){
+
+    localStorage.removeItem("perfilActivo");
+
     location.reload();
+
 }
 
 // ---------------------------------------
@@ -107,12 +189,21 @@ function obtenerFechaHoy() {
 // ---------------------------------------
 // Verificar cambio de día
 // ---------------------------------------
-function verificarNuevoDia() {
+function verificarNuevoDia(){
+
     const jugador = cargarJugador();
+
+    if(!jugador) return;
+
+
     const hoy = obtenerFechaHoy();
-    if (jugador.ultimoReinicio !== hoy) {
+
+    if(jugador.ultimoReinicio !== hoy){
+
         reiniciarMisionesDiarias();
+
         jugador.ultimoReinicio = hoy;
+
         guardarJugador(jugador);
     }
 }
@@ -121,14 +212,21 @@ function verificarNuevoDia() {
 // MAPA DEL REINO
 // =======================================
 function cargarMapaGuardado() {
-    return JSON.parse(
-        localStorage.getItem("orionMapa") || "null"
-    );
+
+    const jugador = cargarJugador();
+
+    if(!jugador) return null;
+
+    return jugador.mapa || null;
 }
 
 function guardarMapa(zonas) {
-    localStorage.setItem(
-        "orionMapa",
-        JSON.stringify(zonas)
-    );
+
+    const jugador = cargarJugador();
+
+    if(!jugador) return;
+
+    jugador.mapa = zonas;
+
+    guardarJugador(jugador);
 }

@@ -583,10 +583,48 @@ Nuevo título:🌾 Guardián de la Granja
 
 6. contador de misiones por zona.
 
-
 ----------
 
-localStorage.clear();
-location.reload();
+📖 Biblia de Mirrafén
+
+Un archivo que iremos escribiendo durante todo el desarrollo.
+
+Capítulos como:
+
+1. El continente de Mirrafén
+
+2. Los cuatro países
+
+3. Los reinos
+
+4. Los aventureros
+
+5. Las criaturas
+
+6. Las profesiones
+
+7. Los rangos
+
+8. Los Oquos
+
+9. La historia
+
+10. Cronología
+
+----------
+app.js
+    controla la aplicación
+
+portal.js
+    controla el Portal
+
+storage.js
+    controla los datos
+
+missions.js
+    controla misiones
+
+map.js
+    controla el mapa
 
 ----------

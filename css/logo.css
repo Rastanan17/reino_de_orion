@@ -1,0 +1,33 @@
+/* =======================================
+   ARCA PIXELES STUDIO
+======================================= */
+
+
+#logoScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    background:black;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+}
+
+
+#logoVideo{
+
+    width:100vw;
+
+    height:100vh;
+
+    object-fit:contain;
+
+}
