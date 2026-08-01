@@ -1,42 +1,31 @@
 // =======================================
 // ARCA PIXELES STUDIO
-// Pantalla inicial del estudio
 // =======================================
-
 
 function iniciarLogo(){
 
-    const logoScreen = document.getElementById("logoScreen");
-
-    if(!logoScreen){
-        continuarHistoria();
-        return;
-    }
-
-
     const video = document.getElementById("logoVideo");
+    const cristal = document.getElementById("cristal");
+    const introLogo = document.getElementById("introLogo");
 
+    cristal.addEventListener("click", ()=>{
 
-    if(video){
+        // Ocultar la pantalla del cristal
+        introLogo.style.display = "none";
 
+        // Mostrar el video
+        video.style.display = "block";
+
+        // Reproducir
         video.play();
 
-        video.onended = ()=>{
+    });
 
-            continuarHistoria();
+    video.addEventListener("ended", ()=>{
 
-        };
+        continuarHistoria();
 
-
-    }else{
-
-        setTimeout(()=>{
-
-            continuarHistoria();
-
-        },8000);
-
-    }
+    });
 
 }
 
@@ -49,13 +38,11 @@ function continuarHistoria(){
 
     document
         .getElementById("logoScreen")
-        .style.display="none";
-
+        .style.display = "none";
 
     document
         .getElementById("introScreen")
-        .style.display="block";
-
+        .style.display = "block";
 
     cargarHistoria();
 
