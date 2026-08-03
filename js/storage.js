@@ -4,8 +4,6 @@
 // =======================================
 // Sistema de almacenamiento
 // =======================================
-// Sistema de almacenamiento
-// =======================================
 const perfilBase = {
     id: "",
     nombre: "",
@@ -29,18 +27,15 @@ const perfilBase = {
 };
 
 function crearPerfil(id,nombre,avatar){
-
     let perfiles = JSON.parse(
         localStorage.getItem("perfiles")
     ) || {};
-
     perfiles[id] = {
         ...perfilBase,
         id,
         nombre,
         avatar
     };
-
     localStorage.setItem(
         "perfiles",
         JSON.stringify(perfiles)
@@ -50,54 +45,34 @@ function crearPerfil(id,nombre,avatar){
 // =======================================
 // PERFIL ACTIVO
 // =======================================
-
 function obtenerPerfilActivo(){
-
     return localStorage.getItem("perfilActivo");
 }
-
 
 // ---------------------------------------
 // Cargar jugador actual
 // ---------------------------------------
-
 function cargarJugador(){
-
     const id = obtenerPerfilActivo();
-
     if(!id){
         return null;
     }
-
-
     const perfiles = JSON.parse(
         localStorage.getItem("perfiles")
     ) || {};
-
-
     return perfiles[id] || null;
 }
-
 
 // ---------------------------------------
 // Guardar jugador actual
 // ---------------------------------------
-
 function guardarJugador(datos){
-
     const id = obtenerPerfilActivo();
-
     if(!id) return;
-
-
     const perfiles = JSON.parse(
         localStorage.getItem("perfiles")
     ) || {};
-
-
     perfiles[id] = datos;
-
-
     localStorage.setItem(
         "perfiles",
         JSON.stringify(perfiles)
@@ -107,54 +82,37 @@ function guardarJugador(datos){
 // ---------------------------------------
 // Obtener rango
 // ---------------------------------------
-function obtenerRango(nivel) {
-    if (nivel >= 10) return "Guardián Legendario";
-    if (nivel >= 9) return "Héroe del Reino";
-    if (nivel >= 8) return "Protector Supremo";
-    if (nivel >= 7) return "Caballero de Mírrafen";
-    if (nivel >= 6) return "Sabio del Reino";
-    if (nivel >= 5) return "Maestro Constructor";
-    if (nivel >= 4) return "Guardián";
-    if (nivel >= 3) return "Constructor";
-    if (nivel >= 2) return "Explorador Mayor";
-    return "Explorador";
+function obtenerRango(nivel){
+    if(nivel>=50) return "Guardián Legendario";
+    if(nivel>=40) return "Héroe del Reino";
+    if(nivel>=35) return "Protector Supremo";
+    if(nivel>=30) return "Caballero de Mírrafen";
+    if(nivel>=25) return "Sabio del Reino";
+    if(nivel>=20) return "Maestro";
+    if(nivel>=15) return "Guardián";
+    if(nivel>=10) return "Constructor";
+    if(nivel>=5) return "Explorador";
+    return "Aprendiz";
 }
+
 
 // ---------------------------------------
 // Dar recompensa
 // ---------------------------------------
 function sumarRecompensa(xp, oquos) {
-
     console.log("RECIBIDO -> XP:", xp, "Oquos:", oquos);
-
     const jugador = cargarJugador();
-
     if(!jugador) return;
-
-
     jugador.xp += xp;
-
     jugador.oquos += oquos;
-
-
     while (jugador.xp >= jugador.xpNecesaria) {
-
         jugador.xp -= jugador.xpNecesaria;
-
         jugador.nivel++;
-
         jugador.xpNecesaria += 50;
-
     }
-
-
     jugador.rango = obtenerRango(jugador.nivel);
-
-
     guardarJugador(jugador);
-
     actualizarPerfil();
-
 }
 
 // ---------------------------------------
@@ -172,11 +130,8 @@ function desbloquearZona(zona) {
 // Reiniciar partida
 // ---------------------------------------
 function reiniciarJugador(){
-
     localStorage.removeItem("perfilActivo");
-
     location.reload();
-
 }
 
 // ---------------------------------------
@@ -190,20 +145,12 @@ function obtenerFechaHoy() {
 // Verificar cambio de día
 // ---------------------------------------
 function verificarNuevoDia(){
-
     const jugador = cargarJugador();
-
     if(!jugador) return;
-
-
     const hoy = obtenerFechaHoy();
-
     if(jugador.ultimoReinicio !== hoy){
-
         reiniciarMisionesDiarias();
-
         jugador.ultimoReinicio = hoy;
-
         guardarJugador(jugador);
     }
 }
@@ -212,21 +159,14 @@ function verificarNuevoDia(){
 // MAPA DEL REINO
 // =======================================
 function cargarMapaGuardado() {
-
     const jugador = cargarJugador();
-
     if(!jugador) return null;
-
     return jugador.mapa || null;
 }
 
 function guardarMapa(zonas) {
-
     const jugador = cargarJugador();
-
     if(!jugador) return;
-
     jugador.mapa = zonas;
-
     guardarJugador(jugador);
 }

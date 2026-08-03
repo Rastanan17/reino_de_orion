@@ -1,75 +1,178 @@
 [
   {
     "id": 1,
+    "nivel":1,
     "nombre": "Castillo",
     "sprite":"images/kingdom/castle.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":52,
-    "y":40
+    "tipo":"misiones",
+    "x":55,
+    "y":43
   },
   {
     "id": 2,
+    "nivel":9,
     "nombre": "Granja",
     "sprite":"images/kingdom/farm.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":70,
-    "y":70
+    "tipo":"misiones",
+    "x":28,
+    "y":60
   },
   {
     "id": 3,
+    "nivel":12,
     "nombre": "Bosque",
     "sprite":"images/kingdom/forest.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":18,
-    "y":55
+    "tipo":"misiones",
+    "x":68,
+    "y":25
   },
   {
     "id": 4,
+    "nivel":15,
     "nombre": "Santuario",
     "sprite":"images/kingdom/sanctuary.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":18,
-    "y":18
+    "tipo":"misiones",
+    "x":59,
+    "y":61
   },
   {
     "id": 5,
+    "nivel":18,
     "nombre": "Observatorio",
     "sprite":"images/kingdom/observatory.jpg",
     "progreso": 0,
     "objetivo": 100,
-
-    "x":82,
-    "y":12
+    "tipo":"misiones",
+    "x":61,
+    "y":56
   },
   {
     "id": 6,
+    "nivel":3,
     "nombre": "Aldea",
     "sprite":"images/kingdom/village.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":42,
-    "y":65
+    "tipo":"misiones",
+    "x":35,
+    "y":50
   },
   {
     "id": 7,
+    "nivel":6,
     "nombre": "Mercado",
     "sprite":"images/kingdom/market.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":33,
-    "y":33
+    "tipo":"mercado",
+    "x":38,
+    "y":43
   },
   {
     "id": 8,
+    "nivel":21,
     "nombre": "Biblioteca",
     "sprite":"images/kingdom/library.jpg",
     "progreso": 0,
     "objetivo": 100,
-    "x":65,
+    "tipo":"misiones",
+    "x":23,
+    "y":29
+  },
+  {
+    "id": 9,
+    "nivel":24,
+    "nombre": "Puerto",
+    "sprite":"images/kingdom/port.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"misiones",
+    "x":42,
+    "y":16
+  },
+  {
+    "id": 10,
+    "nivel":27,
+    "nombre": "Nieve",
+    "sprite":"images/kingdom/snow.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"misiones",
+    "x":74,
     "y":28
+  },
+  {
+    "id": 11,
+    "nivel":30,
+    "nombre": "Bar",
+    "sprite":"images/kingdom/bar.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"misiones",
+    "x":46,
+    "y":40
+  },
+  {
+    "id": 12,
+    "nivel":33,
+    "nombre": "Academia",
+    "sprite":"images/kingdom/academy.jpg",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"misiones",
+    "x":71,
+    "y":43
+  },
+  {
+    "id": 13,
+    "nivel":36,
+    "nombre": "Museo",
+    "sprite":"images/kingdom/musseum.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"logros",
+    "x":49,
+    "y":51
+  },
+  {
+    "id": 14,
+    "nivel":39,
+    "nombre": "Mascotas",
+    "sprite":"images/kingdom/pets.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"misiones",
+    "x":41,
+    "y":61
+  },
+  {
+    "id": 15,
+    "nivel":10,
+    "nombre": "Cavernas",
+    "sprite":"images/kingdom/cave.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"minijuegos",
+    "x":43,
+    "y":83
+  },
+  {
+    "id": 16,
+    "nivel":42,
+    "nombre": "Hielo",
+    "sprite":"images/kingdom/frost.png",
+    "progreso": 0,
+    "objetivo": 100,
+    "tipo":"minijuegos",
+    "x":74,
+    "y":75
   }
 ]

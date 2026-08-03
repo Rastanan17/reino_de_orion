@@ -5,6 +5,7 @@ body{
     font-family:Georgia, serif;
     background:#1b1a17;
     color:white;
+    font-family:'MedievalSharp', cursive;
 }
 
 /* Fondo */
@@ -33,6 +34,7 @@ body::after{
 =============================*/
 .profile{
     max-width:900px;
+    font-family:'MedievalSharp', cursive;
     margin:25px auto;
     padding:20px;
     display:flex;
@@ -90,6 +92,7 @@ body::after{
     background:rgba(80,60,40,.92);
     border-radius:15px;
     border:2px solid #b68a3d;
+    font-family:'MedievalSharp', cursive;
 }
 
 .xpBar{
@@ -128,6 +131,7 @@ button{
     border-radius:10px;
     cursor:pointer;
     transition:.25s;
+    font-family:'MedievalSharp', cursive;
 }
 
 button:hover{
@@ -139,6 +143,7 @@ button:hover{
    TÍTULO
 ========================== */
 .gameTitle{
+    font-family:'MedievalSharp', cursive;
     text-align:center;
     font-size:2.5rem;
     color:#ffd86b;
@@ -150,6 +155,7 @@ button:hover{
    MENÚ PRINCIPAL
 ========================== */
 #mainMenu{
+    font-family:'MedievalSharp', cursive;
     max-width:1000px;
     margin:0 auto;
     display:grid;
@@ -164,6 +170,7 @@ button:hover{
 }
 
 .menuButton{
+    font-family:'MedievalSharp', cursive;
     background:#4c3824e6;
     border:3px solid #c49b3d;
     border-radius:18px;
@@ -191,4 +198,36 @@ button:hover{
     max-width:1000px;
     margin:0 auto;
     padding:20px;
+}
+
+.btnVolver{
+    margin:10px;
+    padding:10px 18px;
+    font-family:'MedievalSharp', cursive;
+    cursor:pointer;
+}
+
+.btnPerfil{
+
+    position:fixed;
+    top:15px;
+    right:15px;
+
+    background:#5b3a1b;
+    color:white;
+
+    border:3px solid #d4af37;
+    border-radius:12px;
+
+    padding:10px 15px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    z-index:9999;
+}
+
+.btnPerfil:hover{
+    transform:scale(1.05);
 }

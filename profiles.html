@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <title>Elegir héroe</title>
+            <link rel="stylesheet" href="css/map.css">
+            <link rel="stylesheet" href="css/intro.css">
+            <link rel="stylesheet" href="css/profiles.css">
+        </head>
+        <body>
+            <div class="selectorPerfiles">
+                <h1>🏰 Un Reino </h1>
+                <p>Selecciona un aventurero</p>
+                <div id="listaPerfiles"></div>
+                <button class="btnNuevo"
+                        onclick="crearPerfilNuevo()">
+                    ➕ Nuevo Aventurero
+                </button>
+            </div>
+            <script src="js/storage.js"></script>
+            <script src="js/profiles.js"></script>
+            <script>mostrarSelectorPerfiles();</script>
+        </body>
+    </html>

@@ -19,6 +19,7 @@ const zonasMapa = [
 let intervalosMisiones = {};
 let misiones = [];
 let filtroZona = "Todas";
+let filtroEstado = "todos";
 
 // ---------------------------------------
 // Cargar misiones
@@ -54,15 +55,24 @@ function guardarMisiones() {
 // ---------------------------------------
 // Mostrar
 // ---------------------------------------
+// Asegúrate de tener estas variables globales arriba en tu código:
+// let filtroZona = "Todas";
+// let filtroEstado = "todos"; // Nuevo
+
 function mostrarMisiones(){
     const content = document.getElementById("content");
+    
     // Estadísticas generales
     const total = misiones.length;
     const completadas = misiones.filter(m=>m.estado==="completada").length;
     const enCurso = misiones.filter(m=>m.estado==="enCurso").length;
     const disponibles = misiones.filter(m=>m.estado==="disponible").length;
     const porcentaje = total>0 ? Math.floor(completadas*100/total) : 0;
+    
     content.innerHTML = `
+        <button onclick="mostrarMapaReino()" class="btnVolver">
+            🗺️ Volver al Reino
+        </button>
         <h2>📜 Misiones del Reino</h2>
         <div class="missions-summary">
             <h3>${completadas}/${total} completadas</h3>
@@ -70,9 +80,10 @@ function mostrarMisiones(){
                 <div class="progressFill" style="width:${porcentaje}%"></div>
             </div>
             <p>
-                🟢 ${completadas}&nbsp;&nbsp;
-                🟡 ${enCurso}&nbsp;&nbsp;
-                🔴 ${disponibles}
+                <button class="status-filter-btn ${filtroEstado==='completada' ? 'active':''}" data-status="completada" style="background:none; border:none; cursor:pointer; color:inherit;">🟢 ${completadas}</button>&nbsp;&nbsp;
+                <button class="status-filter-btn ${filtroEstado==='enCurso' ? 'active':''}" data-status="enCurso" style="background:none; border:none; cursor:pointer; color:inherit;">🟡 ${enCurso}</button>&nbsp;&nbsp;
+                <button class="status-filter-btn ${filtroEstado==='disponible' ? 'active':''}" data-status="disponible" style="background:none; border:none; cursor:pointer; color:inherit;">🔴 ${disponibles}</button>
+                ${filtroEstado !== 'todos' ? ' <button onclick="filtroEstado=\'todos\'; mostrarMisiones();" style="font-size:0.8rem; cursor:pointer;">(Ver todos)</button>' : ''}
             </p>
         </div>
         <div id="missionFilters"></div>
@@ -80,19 +91,13 @@ function mostrarMisiones(){
     `;
 
     // =====================
-    // FILTROS
+    // FILTROS DE ZONA
     // =====================
     const filtros = document.getElementById("missionFilters");
     let htmlFiltros = "";
     zonasMapa.forEach(zona=>{
-        const totalZona =
-            misiones.filter(
-                m=>m.categoria===zona
-            ).length;
-        const hechasZona =
-            misiones.filter(
-                m=>m.categoria===zona && m.estado==="completada"
-            ).length;
+        const totalZona = misiones.filter(m=>m.zona===zona).length;
+        const hechasZona = misiones.filter(m=>m.zona===zona && m.estado==="completada").length;
         htmlFiltros += `
             <button class="filter-btn ${zona===filtroZona ? "active":""}" data-zone="${zona}">
                 ${zona==="Todas" ? "Todas" : `${zona} (${hechasZona}/${totalZona})`}
@@ -100,24 +105,37 @@ function mostrarMisiones(){
         `;
     });
     filtros.innerHTML = htmlFiltros;
-    document.querySelectorAll(".filter-btn")
-        .forEach(btn=>{
-            btn.onclick=()=>{
-                filtroZona = btn.dataset.zone;
-                mostrarMisiones();
-            };
-        });
+
+    // Eventos para botones de zona
+    document.querySelectorAll(".filter-btn").forEach(btn=>{
+        btn.onclick=()=>{
+            filtroZona = btn.dataset.zone;
+            mostrarMisiones();
+        };
+    });
+
+    // Eventos para los botones de estado (colores)
+    document.querySelectorAll(".status-filter-btn").forEach(btn=>{
+        btn.onclick=()=>{
+            const statusClicked = btn.dataset.status;
+            // Si hace click en el mismo estado activo, lo quita (vuelve a 'todos')
+            filtroEstado = (filtroEstado === statusClicked) ? "todos" : statusClicked;
+            mostrarMisiones();
+        };
+    });
 
     // =====================
-    // LISTA
+    // LISTA Y FILTRADO COMBINADO
     // =====================
     const contenedor = document.getElementById("missions");
-    let lista = misiones;
-    if(filtroZona!=="Todas"){
-        lista = misiones.filter(
-            m=>m.zona === filtroZona
-        );
-    }
+    
+    // Filtramos por zona y por estado al mismo tiempo
+    let lista = misiones.filter(m => {
+        const cumpleZona = (filtroZona === "Todas" || m.zona === filtroZona);
+        const cumpleEstado = (filtroEstado === "todos" || m.estado === filtroEstado);
+        return cumpleZona && cumpleEstado;
+    });
+
     lista.forEach(mision=>{
         const tarjeta = document.createElement("div");
         tarjeta.className="mission-card";
@@ -126,6 +144,7 @@ function mostrarMisiones(){
             estado="🟡";
         if(mision.estado==="completada")
             estado="🟢";
+            
         let contenidoBoton="";
         if(mision.estado==="disponible"){
             contenidoBoton=`
@@ -135,31 +154,23 @@ function mostrarMisiones(){
             `;
         }
         else if(mision.estado==="enCurso"){
-    contenidoBoton=`
-        <div class="progress">
-            <div id="barra${mision.id}" class="progressFill"></div>
-        </div>
-        <p id="tiempo${mision.id}">
-            ⏳ Preparando...
-        </p>
-        <div class="mission-actions">
-            <button
-                onclick="terminarMision(${mision.id})">
-                ✅ Ya terminé
-            </button>
-            <button
-                class="secondary"
-                onclick="posponerMision(${mision.id})">
-                ⏸️ Posponer
-            </button>
-        </div>
-    `;
-}
+            contenidoBoton=`
+                <div class="progress">
+                    <div id="barra${mision.id}" class="progressFill"></div>
+                </div>
+                <p id="tiempo${mision.id}">⏳ Preparando...</p>
+                <div class="mission-actions">
+                    <button onclick="terminarMision(${mision.id})">✅ Ya terminé</button>
+                    <button class="secondary" onclick="posponerMision(${mision.id})">⏸️ Posponer</button>
+                </div>
+            `;
+        }
         else{
             contenidoBoton=`
                 <button disabled>🏆 Completada</button>
             `;
         }
+        
         tarjeta.innerHTML=`
             <div class="categoria">${estado}${mision.categoria}</div>
             <div class="icono">${mision.icono}</div>
@@ -173,6 +184,7 @@ function mostrarMisiones(){
             ${contenidoBoton}
         `;
         contenedor.appendChild(tarjeta);
+        
         if(mision.estado==="enCurso"){
             continuarTemporizador(mision);
         }
@@ -185,34 +197,26 @@ function confirmarMision(id){
     mostrarMensaje(
         "📜 Nueva misión",
         `
-        <h3>${mision.icono} ${mision.titulo}</h3>
-        <p>${mision.descripcion}</p>
-        <br>
-        ⭐ ${mision.xp} XP<br>
-        💰 ${mision.oquos} Oquos<br>
-        ⏱️ ${Math.floor(mision.duracion/60)} minutos
-        <br><br>
-        ¿Deseas comenzar esta misión?
-        <br><br>
-        <button id="aceptarMision">
-            ⚔️ Aceptar
-        </button>
-        <button id="cancelarMision">
-            ❌ Cancelar
-        </button>
+            <h3>${mision.icono} ${mision.titulo}</h3>
+            <p>${mision.descripcion}</p>
+            <br>
+            ⭐ ${mision.xp} XP<br>
+            💰 ${mision.oquos} Oquos<br>
+            ⏱️ ${Math.floor(mision.duracion/60)} minutos
+            <br><br>
+            ¿Deseas comenzar esta misión?
+            <br><br>
+            <button id="aceptarMision">⚔️ Aceptar</button>
+            <button id="cancelarMision">❌ Cancelar</button>
         `
     );
     setTimeout(()=>{
         document.getElementById("aceptarMision").onclick=()=>{
-            document
-                .getElementById("modal")
-                .classList.add("oculto");
+            document.getElementById("modal").classList.add("oculto");
             iniciarMision(id);
         };
         document.getElementById("cancelarMision").onclick=()=>{
-            document
-                .getElementById("modal")
-                .classList.add("oculto");
+            document.getElementById("modal").classList.add("oculto");
         };
     },10);
 }
@@ -267,15 +271,13 @@ function completarMision(mision) {
     }
     mision.estado = "completada";
     guardarMisiones();
-    console.log("MISIÓN", mision);
-
-console.log("XP:", mision.xp);
-console.log("OQUOS:", mision.oquos);
-
-sumarRecompensa(
-    mision.xp,
-    mision.oquos
-);
+        console.log("MISIÓN", mision);
+        console.log("XP:", mision.xp);
+        console.log("OQUOS:", mision.oquos);
+    sumarRecompensa(
+        mision.xp,
+        mision.oquos
+    );
     restaurarZona(
         mision.zona,
         mision.restauracion
@@ -299,7 +301,6 @@ sumarRecompensa(
 // ---------------------------------------
 // Reiniciar misiones diarias
 // ---------------------------------------
-
 function reiniciarMisionesDiarias() {
     misiones.forEach(mision => {
         mision.estado = "disponible";
@@ -310,16 +311,11 @@ function reiniciarMisionesDiarias() {
 
 function posponerMision(id){
     const mision = misiones.find(m=>m.id===id);
-
     if(!mision) return;
-
     mision.estado="disponible";
     delete mision.inicio;
-
     guardarMisiones();
-
     mostrarMisiones();
-
     mostrarMensaje(
         "📜 Misión pospuesta",
         "Podrás hacerla cuando quieras."
@@ -327,36 +323,24 @@ function posponerMision(id){
 }
 
 function terminarMision(id){
-
     const mision = misiones.find(
         m=>m.id===id
     );
-
     if(!mision) return;
-
     completarMision(mision);
-
 }
 
 function posponerMision(id){
-
     const mision = misiones.find(
         m=>m.id===id
     );
-
     if(!mision) return;
-
     mision.estado="disponible";
-
     delete mision.inicio;
-
     guardarMisiones();
-
     mostrarMisiones();
-
     mostrarMensaje(
         "📜 Misión pospuesta",
         "Podrás retomarla cuando quieras."
     );
-
 }

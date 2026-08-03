@@ -2,7 +2,7 @@ body{
     margin:0;
     overflow:hidden;
     background:black;
-    font-family:Georgia, serif;
+    font-family: 'MedievalSharp', cursive;
 }
 
 #background{
@@ -15,9 +15,11 @@ body{
     background-size:cover;
     background-position:center;
     filter:brightness(.35);
+    font-family: 'MedievalSharp', cursive;
 }
 
 #overlay{
+    font-family: 'MedievalSharp', cursive;
     position:fixed;
     width:100%;
     height:100%;
@@ -29,6 +31,7 @@ body{
 }
 
 .crawl-container{
+    font-family: 'MedievalSharp', cursive;
     position:absolute;
     width:100%;
     height:100%;
@@ -38,18 +41,19 @@ body{
 
 .crawl{
     position:absolute;
-    bottom:-100%;
+    bottom:100%;
     left:50%;
-    transform:translateX(-50%) rotateX(30deg);
+    transform:translateX(-50%) rotateX(10deg);
     transform-origin:50% 100%;
     width:70%;
     color:#ffd54f;
-    font-size:2rem;
+    font-size:1.5rem;
     font-weight:bold;
     text-align:center;
     white-space:pre-line;
     animation:none;
     text-shadow:0 0 10px black;
+    display:block;
 }
 
 @keyframes crawl{
@@ -62,6 +66,7 @@ body{
 }
 
 #startButton {
+    font-family: 'MedievalSharp', cursive;
     padding: 15px 30px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -75,11 +80,12 @@ body{
 }
 
 #startButton:hover {
-    transform:translateX(-50%) scale(1.1);
+    transform:scale(1.1);
 }
 
 /* Posicionamiento del contenedor de botones en el centro inferior de la pantalla */
 .intro-controls {
+    font-family: 'MedievalSharp', cursive;
     position: absolute;
     bottom: 10%; /* Ajusta la altura a tu gusto */
     left: 50%;
@@ -90,6 +96,7 @@ body{
 
 /* Estilo básico para que se vean bien claros */
 #btnComenzar {
+    font-family: 'MedievalSharp', cursive;
     padding: 15px 30px;
     font-size: 1.2rem;
     font-weight: bold;
@@ -105,22 +112,40 @@ body{
     background-color: #e67e22;
 }
 
+#btnSaltar{
+    font-family: 'MedievalSharp', cursive;
+    position:relative;
+    bottom:900px;
+    right:-300px;
+    padding:12px 22px;
+    border:2px solid #d35400;
+    border-radius:10px;
+    background:#F39C12;
+    box-shadow:0 4px 10px rgba(0,0,0,.5);
+    color:#fff;
+    font-size:1.2rem;
+    font-weight: bold;
+    cursor:pointer;
+    display:none;
+    z-index:9999;
+}
+
 /* La animación solo corre cuando JavaScript le pone la clase */
 .crawl.start-crawl {
-  animation: crawlAnimation 20s linear forwards; 
+  animation: crawlAnimation 100s linear forwards; 
 }
 
 /* Ejemplo de la animación si no la tenías definida */
 @keyframes crawlAnimation {
-  0% {
-    top: 100%;
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    top: -100%;
-    opacity: 0;
-  }
+    0% {
+        top: 80%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: -100%;
+        opacity: 0;
+    }
 }

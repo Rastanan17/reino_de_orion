@@ -4,7 +4,6 @@
 // =======================================
 // Sistema de Pergaminos
 // =======================================
-
 let pergaminos = [];
 let habitantes = [];
 
@@ -37,17 +36,13 @@ async function cargarSistemaPergaminos() {
 // ---------------------------------------
 function obtenerPergaminoAleatorio() {
     if (pergaminos.length === 0) return null;
-
     const disponibles = pergaminos.filter(
         pergamino => pergamino.activo
     );
-
     if (disponibles.length === 0) return null;
-
     const indice = Math.floor(
         Math.random() * disponibles.length
     );
-
     return disponibles[indice];
 }
 
@@ -64,9 +59,7 @@ function obtenerGuia(categoria) {
 // Mostrar pergamino
 // ---------------------------------------
 function mostrarPergamino(recompensa) {
-
     const pergamino = obtenerPergaminoAleatorio();
-
     if (!pergamino) {
         mostrarMensaje(
             "📜",
@@ -74,163 +67,67 @@ function mostrarPergamino(recompensa) {
         );
         return;
     }
-
     const guia = obtenerGuia(
         pergamino.categoria
     );
-
     const modal = document.createElement("div");
-
     modal.className = "modalPergamino";
-
     modal.innerHTML = `
 <div class="pergamino">
-
-    <div class="pergaminoNPC">
-
-    </div>
-
+    <div class="pergaminoNPC"></div>
     <div class="pergaminoTexto">
-
-        <h2>
-            ${guia ? guia.nombre : "Guía del Reino"}
-        </h2>
-
-        <h3>
-            ${pergamino.titulo}
-        </h3>
-
-        <p>
-            ${pergamino.descripcion}
-        </p>
-
+        <h2>${guia ? guia.nombre : "Guía del Reino"}</h2>
+        <h3>${pergamino.titulo}</h3>
+        <p>${pergamino.descripcion}</p>
     </div>
-
     <div class="pergaminoBotones">
-
-        <button id="btnAceptarPergamino">
-            📜 Aceptar
-        </button>
-
-        <button id="btnCancelarPergamino">
-            ❌ Cancelar
-        </button>
-
+        <button id="btnAceptarPergamino">📜 Aceptar</button>
+        <button id="btnCancelarPergamino">❌ Cancelar</button>
     </div>
-
 </div>
 `;
-
     document.body.appendChild(modal);
-
-    document
-        .getElementById("btnAceptarPergamino")
-        .addEventListener("click", () => {
-
-            modal.remove();
-            finalizarCompra(recompensa);
-
-        });
-
-    document
-        .getElementById("btnCancelarPergamino")
-        .addEventListener("click", () => {
-
-            modal.remove();
-
-        });
-
+    document.getElementById("btnAceptarPergamino").addEventListener("click", () => {
+        modal.remove();
+        finalizarCompra(recompensa);
+    });
+    document.getElementById("btnCancelarPergamino").addEventListener("click", () => {
+        modal.remove();
+    });
 }
 
 // =======================================
 // Pergamino de evento del Reino
 // =======================================
-
 function mostrarPergaminoEvento(titulo, texto, recompensa){
-
     const modal = document.createElement("div");
-
     modal.className = "modalPergamino";
-
-
     modal.innerHTML = `
-
 <div class="pergamino">
-
-
     <div class="pergaminoTexto">
-
-        <h2>
-            📜 Mensaje del Reino
-        </h2>
-
-
-        <h3>
-            ${titulo}
-        </h3>
-
-
-        <p>
-            ${texto}
-        </p>
-
-
-        <p>
-            🎁 Recompensa:
+        <h2>📜 Mensaje del Reino</h2>
+        <h3>${titulo}</h3>
+        <p>${texto}</p>
+        <p>🎁 Recompensa:
             <br>
             ⭐ +${recompensa.xp} XP
             <br>
             💰 +${recompensa.oquos} Oquos
         </p>
-
-
     </div>
-
-
     <div class="pergaminoBotones">
-
-        <button id="aceptarEvento">
-            📜 Reclamar
-        </button>
-
+        <button id="aceptarEvento">📜 Reclamar</button>
     </div>
-
-
 </div>
-
 `;
-
-
     document.body.appendChild(modal);
-
-
-
-    document
-    .getElementById("aceptarEvento")
-    .addEventListener("click",()=>{
-
-
+    document.getElementById("aceptarEvento").addEventListener("click",()=>{
         const jugador = cargarJugador();
-
-
         jugador.xp += recompensa.xp;
-
         jugador.oquos += recompensa.oquos;
-
-
         jugador.compensacionPendiente=false;
-
-
         guardarJugador(jugador);
-
-
         actualizarPerfil();
-
-
         modal.remove();
-
-
     });
-
-
 }

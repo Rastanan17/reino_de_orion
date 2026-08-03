@@ -8,9 +8,10 @@ const MODO_DESARROLLO = false;
 // ---------------------------------------
 // Cargar historia
 // ---------------------------------------
-async function cargarHistoria() {
 
-    try {
+async function cargarHistoria(){
+
+    try{
 
         const respuesta = await fetch("data/history.json");
 
@@ -19,19 +20,19 @@ async function cargarHistoria() {
         document.getElementById("crawl").innerHTML =
             historia.paragraphs.join("<br><br>");
 
-    } catch (error) {
+    }catch(error){
 
-        console.error("Error cargando historia:", error);
+        console.error("Error cargando historia:",error);
 
     }
-
 }
 
 
 // ---------------------------------------
 // Iniciar intro
 // ---------------------------------------
-function iniciarIntro() {
+
+function iniciarIntro(){
 
     document.getElementById("btnComenzar").style.display = "none";
 
@@ -41,18 +42,21 @@ function iniciarIntro() {
 
     musica.play();
 
-    document
-        .getElementById("crawl")
-        .classList.add("start-crawl");
+    document.getElementById("crawl").classList.add("start-crawl");
 
+    setTimeout(()=>{
+
+        document.getElementById("btnSaltar").style.display="block";
+
+    },2000);
 }
 
 
 // ---------------------------------------
 // Inicio de la aplicación
 // ---------------------------------------
-document.addEventListener("DOMContentLoaded", async ()=>{
 
+document.addEventListener("DOMContentLoaded",async()=>{
 
     // ===================================
     // MODO DESARROLLO
@@ -60,10 +64,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
 
     if(MODO_DESARROLLO){
 
-        document
-            .getElementById("introScreen")
-            .style.display="none";
-
+        document.getElementById("introScreen").style.display="none";
 
         if(obtenerPerfilActivo()){
 
@@ -75,11 +76,8 @@ document.addEventListener("DOMContentLoaded", async ()=>{
 
         }
 
-
         return;
-
     }
-
 
 
     // ===================================
@@ -89,45 +87,42 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     await cargarHistoria();
 
 
-
-    document
-        .getElementById("btnComenzar")
-        .addEventListener(
-            "click",
-            iniciarIntro
-        );
+    document.getElementById("btnComenzar")
+    .addEventListener("click",iniciarIntro);
 
 
+    document.getElementById("crawl")
+    .addEventListener("animationend",()=>{
 
-    document
-        .getElementById("crawl")
-        .addEventListener(
-            "animationend",
-            ()=>{
+        document.getElementById("startButton")
+        .style.display="inline-block";
 
-                document
-                    .getElementById("startButton")
-                    .style.display="inline-block";
+    });
 
-            }
-        );
 
+    document.getElementById("btnSaltar")
+    .addEventListener("click",()=>{
+
+        document.getElementById("introMusic").pause();
+
+        mostrarPortal();
+
+    });
 
 
     // IMPORTANTE:
     // La historia NO entra al Reino directamente.
     // Primero abre el Portal.
 
-        document
-    .getElementById("startButton")
-    .addEventListener(
-        "click",
-        ()=>{
+    document.getElementById("startButton")
+    .addEventListener("click",()=>{
 
-            console.log("BOTON PORTAL PRESIONADO");
+        console.log("BOTON PORTAL PRESIONADO");
 
-            console.log("LLAMANDO PORTAL");
-mostrarPortal();
+        console.log("LLAMANDO PORTAL");
 
-        }
-)});
+        mostrarPortal();
+
+    });
+
+});
