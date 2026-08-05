@@ -628,3 +628,130 @@ map.js
     controla el mapa
 
 ----------
+
+🏰 BLOQUE 1 (Prioridad máxima)
+Interior del Castillo
+
+Es el primer edificio que conoce cualquier jugador.
+
+✅ 1. Crear la pantalla del Castillo
+✅ 2. Fondo del salón
+
+Usar:
+
+✅ 3. Agregar NPC
+
+Por ahora:
+
+👑 Rey
+🛡 Guardia
+
+Después iremos agregando:
+
+🧙 Mago
+⚔ Capitán
+👸 Reina
+📜 Consejero
+✅ 4. Agregar zonas clickeables
+
+Por ejemplo:
+
+✅ 5. Primer diálogo del Rey
+
+Algo sencillo.
+
+✅ 6. Tablón
+
+Desde aquí abrir:
+
+Pero filtradas al Castillo.
+
+✅ 7. Salir
+
+Volver al mapa.
+
+🛒 BLOQUE 2
+Mejorar el Mercado
+
+Ya funciona.
+
+Ahora hacerlo divertido.
+
+Agregar:
+
+Comerciante
+Diálogo
+Fondo interior
+Música
+Sonido de monedas
+🔔 BLOQUE 3
+Sistema de notificaciones
+
+Ya creaste la carpeta.
+
+Hacer una función:
+
+Y usarla para:
+
+⭐ XP
+
+💰 Oquos
+
+🏆 Logros
+
+🗺 Nuevas zonas
+
+✨ Nivel
+
+👤 BLOQUE 4
+Perfil del jugador
+
+Cuando toca su avatar.
+
+Abrir:
+
+Con:
+
+nombre
+avatar
+rango
+XP
+estadísticas
+cambiar avatar
+cambiar nombre
+🌍 BLOQUE 5
+Primer edificio RPG terminado
+
+Cuando el jugador toca:
+
+No debe abrir misiones.
+
+Debe abrir:
+
+Y desde allí:
+
+📚 BLOQUE 6
+Empezar la historia del Reino
+
+Crear el primer diálogo.
+
+Más adelante todos los NPC usarán:
+
+y cada NPC recordará:
+
+nivel
+logros
+zonas
+eventos
+🎵 BLOQUE 7
+Sonidos
+
+Cuando Orión entra:
+
+🏰 Castillo
+
+🔊 Ambiente
+
+👣 Pasos
+
+🔥 Chimenea
