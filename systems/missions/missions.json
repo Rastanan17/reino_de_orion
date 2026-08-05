@@ -404,5 +404,19 @@
     "estado": "disponible",
     "dificultad": "dificil",
     "restauracion": 5
+  },
+  {
+    "id":30,
+    "zona":"Bosque",
+    "categoria":"🌳 Bosque",
+    "titulo":"Cansados de caminar nos dormimos una siesta entre los árboles.",
+    "descripcion":"Encontramos una linda cabaña en medio del bosque, tenemos que aprovechar y descansar.",
+    "icono":"🛏️",
+    "xp":30,
+    "oquos":15,
+    "duracion":1200,
+    "estado":"disponible",
+    "dificultad":"media",
+    "restauracion":10
   }
 ]

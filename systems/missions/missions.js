@@ -344,3 +344,110 @@ function posponerMision(id){
         "Podrás retomarla cuando quieras."
     );
 }
+
+
+// =======================================
+// TABLÓN DE MISIONES
+// =======================================
+
+let paginaActual = 0;
+
+const MISIONES_POR_PAGINA = 6;
+
+// =======================================
+// TABLÓN DE MISIONES
+// =======================================
+
+function mostrarTablonMisiones(){
+
+    const content = document.getElementById("content");
+
+    const inicio = paginaActual * MISIONES_POR_PAGINA;
+
+    const fin = inicio + MISIONES_POR_PAGINA;
+
+    const pagina = misiones.slice(inicio, fin);
+
+    content.innerHTML = `
+
+    <section class="tablon-misiones">
+
+        <img
+            class="btn-volver"
+            src="images/items/exit.png"
+            alt="Volver"
+            onclick="mostrarCastillo()">
+
+        <img
+            class="btn-anterior"
+            src="images/items/arrow_left.png"
+            alt="Anterior">
+
+        <img
+            class="btn-siguiente"
+            src="images/items/arrow_right.png"
+            alt="Siguiente">
+
+        <div class="pergaminos">
+
+            ${pagina.map(crearPergamino).join("")}
+
+        </div>
+
+    </section>
+
+    `;
+
+}
+
+// =======================================
+// CREAR PERGAMINO
+// =======================================
+
+// =======================================
+// CREAR PERGAMINO
+// =======================================
+
+function crearPergamino(mision){
+
+    return `
+
+        <div
+            class="pergamino2"
+            onclick="confirmarMision(${mision.id})">
+
+            <div class="titulo-mision">
+
+                ${mision.icono} ${mision.titulo}
+
+            </div>
+
+            <div class="categoria-mision">
+
+                ${mision.categoria}
+
+            </div>
+
+            <div class="dificultad-mision">
+
+                ⚔️ ${mision.dificultad}
+
+            </div>
+
+            <div class="xp-mision">
+
+                ⭐ ${mision.xp} XP
+
+            </div>
+
+            <div class="oquos-mision">
+
+                💰 ${mision.oquos} Oquos
+
+            </div>
+
+        </div>
+
+    `;
+
+}
