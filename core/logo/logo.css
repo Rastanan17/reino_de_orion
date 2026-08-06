@@ -13,12 +13,14 @@
 }
 
 #logoVideo{
-    font-family: 'MedievalSharp', cursive;
-    display:none;
-    width:100vw;
-    height:100vh;
-    object-fit:contain;
-    background:black;
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 9999;
 }
 
 #introLogo{

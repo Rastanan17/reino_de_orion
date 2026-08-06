@@ -116,7 +116,7 @@ body{
     font-family: 'MedievalSharp', cursive;
     position:relative;
     bottom:900px;
-    right:-300px;
+    right:20%;
     padding:12px 22px;
     border:2px solid #d35400;
     border-radius:10px;

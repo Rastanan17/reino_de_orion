@@ -244,3 +244,20 @@ button:hover{
     background-size:cover;
 
 }
+
+#version{
+    position: fixed;
+    bottom: 10px;
+    right: 12px;
+
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.8rem;
+
+    color: rgba(255,255,255,.65);
+    text-shadow: 1px 1px 2px #000;
+
+    pointer-events: none;
+    user-select: none;
+
+    z-index: 99999;
+}
