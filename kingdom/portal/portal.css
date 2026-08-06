@@ -2,7 +2,7 @@
    PORTAL DEL REINO
 ======================================= */
 .portal{
-    Font-family:'MedievalSharp',cursive;
+    font-family:'MedievalSharp',cursive;
     width:90%;
     max-width:700px;
     margin:auto;
@@ -12,36 +12,40 @@
     border-radius:20px;
     border:3px solid #c79b3b;
     color:white;
+    box-sizing:border-box;
 }
-
+/* TITULO */
 .portal h1{
-    font-family:'MedievalSharp',cursive;
     font-size:38px;
+    margin-bottom:25px;
 }
-
+/* INPUT NUEVO PERFIL */
 .portal input{
     font-family:'MedievalSharp',cursive;
     width:80%;
+    max-width:450px;
     padding:12px;
     font-size:18px;
     border-radius:10px;
     border:none;
+    text-align:center;
 }
-
-/* Selector de personajes */
+/* =======================================
+   AVATARES
+======================================= */
 .selectorAvatares{
-    font-family:'MedievalSharp',cursive;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
     gap:20px;
-    margin-top:15px;
+    margin-top:20px;
 }
-
 .avatarCard{
-    font-family:'MedievalSharp',cursive;
-    width:90px;
+    width:100px;
+    min-height:120px;
     padding:10px;
+    box-sizing:border-box;
+    overflow:hidden;
     cursor:pointer;
     border:3px solid transparent;
     border-radius:15px;
@@ -50,98 +54,113 @@
     display:flex;
     flex-direction:column;
     align-items:center;
+    justify-content:center;
 }
-
-.avatarPerfil{
-    width:100px;
-    height:100px;
-    object-fit:cover;
-    border-radius:50%;
-}
-
-.avatarCard img{
-    width:100%;
-    height:100%;
+.vatarCard img{
+    width:75px;
+    height:75px;
+    max-width:100%;
     object-fit:cover;
     border-radius:50%;
 }
 .avatarCard span{
-    Font-family:'MedievalSharp',cursive;
-    display:block;
     margin-top:8px;
-    font-size:14px;
+    font-size:12px;
+    width:100%;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
-
 .avatarCard:hover{
     transform:scale(1.08);
 }
-
 .avatarCard.seleccionado{
     border-color:#ffd34e;
     box-shadow:0 0 15px #ffd34e;
-    width:min(150px,250vw);
-    padding:10px;
-    text-align:center;
-    transition:.25s;
+    transform:scale(1.08);
 }
-
-/* botones */
+/* =======================================
+   BOTONES
+======================================= */
 .portal button{
-    Font-family:'MedievalSharp',cursive;
+    font-family:'MedievalSharp',cursiva;
     margin:10px;
-    padding:12px 25px;
+    padding:14px 28px;
     border-radius:12px;
     border:none;
     cursor:pointer;
-    font-size:16px;
+    font-size:18px;
+    min-height:45px;
 }
-
-.cardPerfil{
-    width:min(120px,90vw);
-    padding:10px;
-    background:rgba(80,60,40,.9);
-    border:2px solid #b68a3d;
-    border-radius:18px;
-    text-align:center;
-    transition:.25s;
-    
+.btnNuevoPerfil{
+    background:#8b5a2b;
+    color:white;
 }
-
-.cardPerfil:hover{
-    transform:translateY(-5px);
-    box-shadow:0 0 20px rgba(255,215,0,.4);
-}
-
+/* =======================================
+   PERFILES EXISTENTES
+======================================= */
 #listaPerfiles{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:18px;
-    margin-top:15px;
+    margin-top:20px;
 }
-
-.btnNuevoPerfil{
-    background:#8b5a2b;
-    color:white;
-    font-family:"MedievalSharp",cursive;
+.cardPerfil{
+    width:130px;
+    padding:12px;
+    background:rgba(80,60,40,.9);
+    border:2px solid #b68a3d;
+    border-radius:18px;
+    text-align:center;
+    transition:.25s;
 }
-
-@media(max-width:700px){
-
-.portal{
-    padding:20px;
+.cardPerfil:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(255,215,0,.4);
 }
-
-.portal h1{
-    font-size:30px;
+/* =======================================
+   TABLET
+======================================= */
+@media(max-width:900px){
+    .portal{
+        max-width:600px;
+        padding:25px;
+    }.portal h1{
+        font-size:32px;
+    }.selectorAvatares{
+        gap:15px;
+    }
 }
-
-.selectorAvatares{
-    gap:10px;
-}
-
-.avatarCard{
-    width:75px;
-}
-
+/* =======================================
+   CELULAR
+======================================= */
+@media(max-width:600px){
+    .portal{
+        width:95%;
+        padding:18px;
+        border-width:2px;
+    }.portal h1{
+        font-size:26px;
+    }.portal input{
+        width:95%;
+        font-size:16px;
+    }.selectorAvatares{
+        gap:10px;
+    }.avatarCard{
+        width:80px;
+        min-height:105px;
+    }.avatarCard img{
+        width:55px;
+        height:55px;
+    }.avatarCard span{
+        font-size:12px;
+    }.portal button{
+        width:90%;
+        margin:8px auto;
+        display:block;
+        font-size:16px;
+    }.cardPerfil{
+        width:110px;
+    }
 }

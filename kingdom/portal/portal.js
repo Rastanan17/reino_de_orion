@@ -2,7 +2,7 @@
 // PORTAL DE MÍRRAFEN
 // =======================================
 // Avatar seleccionado por defecto
-let avatarSeleccionado = "explorer.jpg";
+let avatarSeleccionado = "kingdom/portal/avatars/explorer.jpg";
 
 // =======================================
 // PORTAL
@@ -48,7 +48,7 @@ function cargarTarjetasPerfiles(){
         const jugador=perfiles[id];
         lista.innerHTML+=`
         <div class="cardPerfil">
-            <img src="images/characters/${jugador.avatar}" class="avatarPerfil">
+            <img src="kingdom/portal/avatars/${jugador.avatar}" class="avatarPerfil">
             <h2>${jugador.nombre}</h2>
             <p>Nivel ${jugador.nivel}</p>
             <p>${jugador.rango}</p>
@@ -78,27 +78,27 @@ function mostrarCrearPerfil(){
         <h3>Elige tu personaje</h3>
         <div class="selectorAvatares">
             <div class="avatarCard seleccionado" onclick="seleccionarAvatar('../../images/characters/explorer.jpg',this)">
-                <img src="../../images/characters/explorer.jpg">
+                <img src="kingdom/portal/avatars/explorer.jpg">
                 <span>Explorador</span>
             </div>
             <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/alien.jpg',this)">
-                <img src="../../images/characters/alien.jpg">
+                <img src="kingdom/portal/avatars/alien.jpg">
                 <span>Alien</span>
             </div>
             <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/dwarf.jpg',this)">
-                <img src="../../images/characters/dwarf.jpg">
+                <img src="kingdom/portal/avatars/dwarf.jpg">
                 <span>Enano</span>
             </div>
             <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/elf.jpg',this)">
-                <img src="../../images/characters/elf.jpg">
+                <img src="kingdom/portal/avatars/elf.jpg">
                 <span>Elfo</span>
             </div>
             <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/witch.jpg',this)">
-                <img src="../../images/characters/witch.jpg">
+                <img src="kingdom/portal/avatars/witch.jpg">
                 <span>Bruja</span>
             </div>
             <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/wolf.jpg',this)">
-                <img src="../../images/characters/wolf.jpg">
+                <img src="kingdom/portal/avatars/wolf.jpg">
                 <span>Lobo</span>
             </div>
             </div>
@@ -109,7 +109,6 @@ function mostrarCrearPerfil(){
     </section>
     `;
 }
-
 // =======================================
 // SELECCIONAR AVATAR
 // =======================================
@@ -120,7 +119,6 @@ function seleccionarAvatar(avatar,card){
     });
     card.classList.add("seleccionado");
 }
-
 // =======================================
 // CREAR PERFIL
 // =======================================
@@ -147,17 +145,11 @@ async function crearNuevoPerfil(){
 }
 
 function cambiarPerfil(){
-
     localStorage.removeItem("perfilActivo");
-
     const perfil = document.querySelector(".profile");
-
     if(perfil){
         perfil.style.display = "none";
     }
-
     document.getElementById("content").innerHTML = "";
-
     mostrarPortal();
-
 }

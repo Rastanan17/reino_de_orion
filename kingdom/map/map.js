@@ -2,16 +2,14 @@
 // MAPA DEL REINO
 // =======================================
 let zonas = [];
+
 async function cargarMapa(){
-
     const respuesta = await fetch("kingdom/map/map.json");
-
     zonas = await respuesta.json();
-
     guardarMapa(zonas);
-
 }
 
+// =======================================
 // =======================================
 function mostrarMapaReino() {
     const jugador = cargarJugador();
@@ -27,8 +25,15 @@ function mostrarMapaReino() {
             🔄 Cambiar perfil
         </button>
         <h2>🗺️ Reino de ${jugador.nombre}</h2>
-
-        <div id="kingdomMap"></div>
+        <div id="kingdomLayout">
+            <div id="kingdomMap">
+                <img
+                    id="mapImage"
+                    src="kingdom/map/images/map.jpg"
+                    alt="Mapa del Reino">
+            </div>
+            <aside id="zoneList"></aside>
+        </div>
     `;
     if(!zonas || zonas.length===0){
         mostrarMensaje(
@@ -38,37 +43,58 @@ function mostrarMapaReino() {
         return;
     }
     const mapa = document.getElementById("kingdomMap");
-    zonas.forEach(zona => {
-        const RUTA_MAPA = "kingdom/map/images/";
+    const lista = document.getElementById("zoneList");
+    const iconos = {
+        Castillo:"🏰",
+        Aldea:"🏡",
+        Bosque:"🌲",
+        Granja:"🌾",
+        Santuario:"⛪",
+        Observatorio:"🔭",
+        Mercado:"🛒"
+    };
+    zonas.forEach(zona=>{
         const desbloqueada =
             jugador.nivel >= zona.nivel;
+        // ==========================
+        // LISTA LATERAL
+        // ==========================
+        const item = document.createElement("div");
+        item.className = "zoneItem";
+        item.textContent = desbloqueada
+            ? `${iconos[zona.nombre] || "📍"} ${zona.nombre}`
+            : `🔒 Nivel ${zona.nivel}`;
+        item.onclick = ()=>abrirZona(zona);
+        lista.appendChild(item);
+        // ==========================
+        // EDIFICIO EN EL MAPA
+        // ==========================
         const sprite = desbloqueada
-            ? RUTA_MAPA + zona.sprite
-            : RUTA_MAPA + "unknown.jpg";
+            ? "kingdom/map/images/" + zona.sprite
+            : "kingdom/map/images/unknown.jpg";
         const div = document.createElement("div");
-        div.className="zone";
+        div.className = "zone";
         if(!desbloqueada){
             div.classList.add("bloqueada");
         }
-        div.style.left = zona.x+"%";
-        div.style.top = zona.y+"%";
+        div.style.left = zona.x + "%";
+        div.style.top = zona.y + "%";
         div.innerHTML = `
             <div class="zoneSprite">
                 <img src="${sprite}">
             </div>
-
             <div class="zoneName">
                 ${desbloqueada ? zona.nombre : "???"}
             </div>
-
             <div class="zoneLevel">
                 ${desbloqueada ? "" : "🔒 Nivel " + zona.nivel}
             </div>
         `;
-        div.onclick=()=>abrirZona(zona);
+        div.onclick = ()=>abrirZona(zona);
         mapa.appendChild(div);
     });
 }
+
 // =======================================
 function restaurarZona(nombreZona, cantidad = 10){
     const zona = zonas.find(
