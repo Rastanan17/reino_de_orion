@@ -87,11 +87,12 @@ body{
 .intro-controls {
     font-family: 'MedievalSharp', cursive;
     position: absolute;
-    bottom: 10%; /* Ajusta la altura a tu gusto */
+    bottom: 40px; /* Ajusta la altura a tu gusto */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000; /* Forzamos que quede por encima de absolutamente todo */
-    text-align: center;
+    z-index:9999; /* Forzamos que quede por encima de absolutamente todo */
+    gap:15px;
+    display:flex;
 }
 
 /* Estilo básico para que se vean bien claros */
@@ -113,10 +114,7 @@ body{
 }
 
 #btnSaltar{
-    font-family: 'MedievalSharp', cursive;
-    position:relative;
-    bottom:900px;
-    right:20%;
+    font-family:'MedievalSharp', cursive;
     padding:12px 22px;
     border:2px solid #d35400;
     border-radius:10px;
@@ -124,7 +122,7 @@ body{
     box-shadow:0 4px 10px rgba(0,0,0,.5);
     color:#fff;
     font-size:1.2rem;
-    font-weight: bold;
+    font-weight:bold;
     cursor:pointer;
     display:none;
     z-index:9999;
@@ -147,5 +145,18 @@ body{
     100% {
         top: -100%;
         opacity: 0;
+    }
+}
+
+@media(max-width:600px){
+    .intro-controls{
+        bottom:25px;
+        width:90%;
+        flex-direction:column;
+        align-items:center;
+    }
+    .intro-controls button{
+        width:90%;
+        font-size:1rem;
     }
 }
