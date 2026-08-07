@@ -18,9 +18,6 @@ function mostrarMapaReino() {
     }
     const content = document.getElementById("content");
     content.innerHTML = `
-        <button onclick="mostrarMapaReino()" class="btnVolver">
-            🏰 Volver al Reino
-        </button>
         <button class="btnPerfil" onclick="mostrarPortal()">
             🔄 Cambiar perfil
         </button>
@@ -94,12 +91,9 @@ function mostrarMapaReino() {
         mapa.appendChild(div);
     });
 }
-
 // =======================================
 function restaurarZona(nombreZona, cantidad = 10){
-    const zona = zonas.find(
-        z => z.nombre === nombreZona
-    );
+    const zona = zonas.find(z => z.nombre === nombreZona);
     if(!zona) return;
     zona.progreso += cantidad;
     if(zona.progreso > zona.objetivo){
@@ -107,7 +101,6 @@ function restaurarZona(nombreZona, cantidad = 10){
     }
     guardarMapa(zonas);
 }
-
 // =======================================
 // Abrir zona
 // =======================================
@@ -123,29 +116,40 @@ function abrirZona(zona){
         );
         return;
     }
-    // 📜 Zonas con misiones
-    if(zona.nombre==="Castillo"){
+    // 🏰 CASTILLO
+    if(zona.nombre === "Castillo"){
         mostrarCastillo();
         return;
     }
-    if(zona.tipo==="misiones"){
+    // 🏡 ALDEA
+    if(zona.nombre === "Aldea"){
+        mostrarAldea();
+        return;
+    }
+    // X GRANJA
+    if(zona.nombre === "Granja"){
+        mostrarGranja();
+        return;
+    }
+    // 📜 ZONAS CON MISIONES
+    if(zona.tipo === "misiones"){
         filtroZona = zona.nombre;
         mostrarMisiones();
         return;
     }
-    // 🛒 Mercado
-    if(zona.tipo==="mercado"){
+    // 🛒 MERCADO
+    if(zona.tipo === "mercado"){
         console.log("Entrando al mercado");
         mostrarMercado();
         return;
     }
-    // 🏆 Logros
-    if(zona.tipo==="logros"){
+    // 🏆 LOGROS
+    if(zona.tipo === "logros"){
         mostrarLogros();
         return;
     }
-    // 🎮 Minijuegos
-    if(zona.tipo==="minijuegos"){
+    // 🎮 MINIJUEGOS
+    if(zona.tipo === "minijuegos"){
         mostrarMinijuegos();
         return;
     }
@@ -154,7 +158,6 @@ function abrirZona(zona){
         "Esta zona todavía está en construcción."
     );
 }
-
 // =======================================
 function obtenerEstadoZona(zona){
     if(zona.progreso < 40){

@@ -3,7 +3,6 @@
 // =======================================
 // Avatar seleccionado por defecto
 let avatarSeleccionado = "kingdom/portal/avatars/explorer.jpg";
-
 // =======================================
 // PORTAL
 // =======================================
@@ -39,21 +38,60 @@ function mostrarPortal(){
 // TARJETAS
 // =======================================
 function cargarTarjetasPerfiles(){
-    const lista=document.getElementById("listaPerfiles");
-    const perfiles=JSON.parse(
+
+    const lista = document.getElementById("listaPerfiles");
+
+    const perfiles = JSON.parse(
         localStorage.getItem("perfiles")
     ) || {};
-    lista.innerHTML="";
+
+    lista.innerHTML = "";
+
     for(const id in perfiles){
-        const jugador=perfiles[id];
-        lista.innerHTML+=`
-        <div class="cardPerfil">
-            <img src="kingdom/portal/avatars/${jugador.avatar}" class="avatarPerfil">
-            <h2>${jugador.nombre}</h2>
-            <p>Nivel ${jugador.nivel}</p>
-            <p>${jugador.rango}</p>
-            <button onclick="entrarPerfil('${id}')">⚔️ Entrar</button>
-        </div>
+
+        const jugador = perfiles[id];
+
+        // Compatible con perfiles nuevos y antiguos
+        let avatar = jugador.avatar || jugador.foto;
+
+        // Si no existe o usa una ruta vieja,
+        // usamos un avatar válido del portal.
+        if(
+            !avatar ||
+            avatar.includes("images/characters") ||
+            avatar.includes("assets/images")
+        ){
+            avatar = "kingdom/portal/avatars/explorer.jpg";
+        }
+
+        // Si solo tenemos el nombre del archivo,
+        // construimos la ruta correcta.
+        if(
+            !avatar.includes("/")
+        ){
+            avatar = `kingdom/portal/avatars/${avatar}`;
+        }
+
+        lista.innerHTML += `
+            <div class="cardPerfil">
+
+                <img
+                    src="${avatar}"
+                    class="avatarPerfil"
+                    alt="Avatar de ${jugador.nombre}"
+                >
+
+                <h2>${jugador.nombre}</h2>
+
+                <p>Nivel ${jugador.nivel}</p>
+
+                <p>${jugador.rango || "Aprendiz"}</p>
+
+                <button onclick="entrarPerfil('${id}')">
+                    ⚔️ Entrar
+                </button>
+
+            </div>
         `;
     }
 }
@@ -77,29 +115,41 @@ function mostrarCrearPerfil(){
         <br><br>
         <h3>Elige tu personaje</h3>
         <div class="selectorAvatares">
-            <div class="avatarCard seleccionado" onclick="seleccionarAvatar('../../images/characters/explorer.jpg',this)">
+            <div class="avatarCard seleccionado"
+                onclick="seleccionarAvatar('kingdom/portal/avatars/explorer.jpg',this)">
                 <img src="kingdom/portal/avatars/explorer.jpg">
                 <span>Explorador</span>
             </div>
-            <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/alien.jpg',this)">
+
+            <div class="avatarCard"
+                onclick="seleccionarAvatar('kingdom/portal/avatars/alien.jpg',this)">
                 <img src="kingdom/portal/avatars/alien.jpg">
                 <span>Alien</span>
             </div>
-            <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/dwarf.jpg',this)">
+
+            <div class="avatarCard"
+                onclick="seleccionarAvatar('kingdom/portal/avatars/dwarf.jpg',this)">
                 <img src="kingdom/portal/avatars/dwarf.jpg">
                 <span>Enano</span>
             </div>
-            <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/elf.jpg',this)">
+
+            <div class="avatarCard"
+                onclick="seleccionarAvatar('kingdom/portal/avatars/elf.jpg',this)">
                 <img src="kingdom/portal/avatars/elf.jpg">
                 <span>Elfo</span>
             </div>
-            <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/witch.jpg',this)">
+
+            <div class="avatarCard"
+                onclick="seleccionarAvatar('kingdom/portal/avatars/witch.jpg',this)">
                 <img src="kingdom/portal/avatars/witch.jpg">
                 <span>Bruja</span>
             </div>
-            <div class="avatarCard" onclick="seleccionarAvatar('../../images/characters/wolf.jpg',this)">
+
+            <div class="avatarCard"
+                onclick="seleccionarAvatar('kingdom/portal/avatars/wolf.jpg',this)">
                 <img src="kingdom/portal/avatars/wolf.jpg">
                 <span>Lobo</span>
+            </div>
             </div>
             </div>
         </div>

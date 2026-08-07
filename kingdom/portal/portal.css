@@ -56,7 +56,7 @@
     align-items:center;
     justify-content:center;
 }
-.vatarCard img{
+.avatarCard img{
     width:75px;
     height:75px;
     max-width:100%;
@@ -107,13 +107,27 @@
     margin-top:20px;
 }
 .cardPerfil{
-    width:130px;
-    padding:12px;
-    background:rgba(80,60,40,.9);
-    border:2px solid #b68a3d;
-    border-radius:18px;
-    text-align:center;
+    width:100px;
+    min-height:120px;
+    padding:10px;
+    box-sizing:border-box;
+    overflow:hidden;
+    cursor:pointer;
+    border:3px solid transparent;
+    border-radius:15px;
+    background:#2b2115;
     transition:.25s;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.cardPerfil img {
+    width:75px;
+    height:75px;
+    max-width:100%;
+    object-fit:cover;
+    border-radius:50%;
 }
 .cardPerfil:hover{
     transform:translateY(-5px);

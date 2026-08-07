@@ -59,19 +59,10 @@ function crearPerfilNuevo(){
         return;
     }
     perfiles[id]={
+        ...perfilBase,
         id:id,
         nombre:nombre,
-        nivel:1,
-        xp:0,
-        xpNecesaria:100,
-        oquos:0,
-        rango:"Aprendiz",
-        avatar:"../../images/characters/npc_1.png",
-        misionesCompletadas:[],
-        logros:[],
-        racha:0,
-        zonasRestauradas:[],
-        mapa:null
+        avatar:"kingdom/portal/avatars/explorer.jpg",
     };
     localStorage.setItem(
         "perfiles",
