@@ -140,7 +140,21 @@ function reiniciarJugador(){
 function obtenerFechaHoy() {
     return new Date().toISOString().split("T")[0];
 }
+// =======================================
+// REINICIO DE MISIONES DIARIAS
+// =======================================
 
+function reiniciarMisionesDiarias(){
+
+    localStorage.removeItem(
+        "estadoMisionesCastillo"
+    );
+
+    console.log(
+        "Misiones diarias reiniciadas"
+    );
+
+}
 // ---------------------------------------
 // Verificar cambio de día
 // ---------------------------------------

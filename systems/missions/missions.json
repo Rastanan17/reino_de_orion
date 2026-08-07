@@ -1,19 +1,5 @@
 [
   {
-    "id": 1,
-    "zona": "Castillo",
-    "categoria": "🏰 Castillo",
-    "titulo": "Haz la cama.",
-    "descripcion": "La habitación del castillo necesita volver a estar ordenada.",
-    "icono": "🛏️",
-    "xp": 10,
-    "oquos": 5,
-    "duracion": 180,
-    "estado": "disponible",
-    "dificultad": "facil",
-    "restauracion": 5
-  },
-  {
     "id": 2,
     "zona": "Granja",
     "categoria": "🌾 Granja",
@@ -23,20 +9,6 @@
     "xp": 15,
     "oquos": 5,
     "duracion": 300,
-    "estado": "disponible",
-    "dificultad": "facil",
-    "restauracion": 5
-  },
-  {
-    "id": 3,
-    "zona": "Castillo",
-    "categoria": "🏰 Castillo",
-    "titulo": "Cepíllate los dientes.",
-    "descripcion": "Los caballeros cuidan su sonrisa antes de partir a una aventura.",
-    "icono": "🪥",
-    "xp": 10,
-    "oquos": 5,
-    "duracion": 180,
     "estado": "disponible",
     "dificultad": "facil",
     "restauracion": 5
@@ -154,20 +126,6 @@
     "restauracion": 5
   },
   {
-    "id": 12,
-    "zona": "Castillo",
-    "categoria": "🏰 Castillo",
-    "titulo": "Prepara tu ropa para el día siguiente.",
-    "descripcion": "Los caballeros se preparan antes de partir a una nueva aventura.",
-    "icono": "👕",
-    "xp": 10,
-    "oquos": 5,
-    "duracion": 180,
-    "estado": "disponible",
-    "dificultad": "facil",
-    "restauracion": 5
-  },
-  {
     "id": 13,
     "zona": "Aldea",
     "categoria": "🍽️ Aldea",
@@ -207,20 +165,6 @@
     "duracion": 120,
     "estado": "disponible",
     "dificultad": "facil",
-    "restauracion": 5
-  },
-  {
-    "id": 16,
-    "zona": "Castillo",
-    "categoria": "🏰 Castillo",
-    "titulo": "Baña tu mascota o cuida de ella.",
-    "descripcion": "Las bestias leales del castillo merecen estar limpias y protegidas.",
-    "icono": "🐾",
-    "xp": 20,
-    "oquos": 15,
-    "duracion": 600,
-    "estado": "disponible",
-    "dificultad": "media",
     "restauracion": 5
   },
   {
@@ -294,20 +238,6 @@
     "restauracion": 5
   },
   {
-    "id": 22,
-    "zona": "Castillo",
-    "categoria": "🏰 Castillo",
-    "titulo": "Báñate y arréglate para empezar el día.",
-    "descripcion": "Un auténtico caballero cuida su armadura y su higiene personal.",
-    "icono": "🚿",
-    "xp": 10,
-    "oquos": 5,
-    "duracion": 300,
-    "estado": "disponible",
-    "dificultad": "facil",
-    "restauracion": 5
-  },
-  {
     "id": 23,
     "zona": "Bosque",
     "categoria": "🌳 Bosque",
@@ -358,20 +288,6 @@
     "icono": "🗑️",
     "xp": 15,
     "oquos": 10,
-    "duracion": 180,
-    "estado": "disponible",
-    "dificultad": "facil",
-    "restauracion": 5
-  },
-  {
-    "id": 27,
-    "zona": "Castillo",
-    "categoria": "🏰 Castillo",
-    "titulo": "Ordena tus zapatos y déjalos en su lugar.",
-    "descripcion": "Las botas de campaña deben estar listas y ordenadas en la entrada.",
-    "icono": "👞",
-    "xp": 10,
-    "oquos": 5,
     "duracion": 180,
     "estado": "disponible",
     "dificultad": "facil",

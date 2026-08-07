@@ -17,7 +17,7 @@
     width:min(900px,95vw);
     aspect-ratio:900/560;
     height:auto;
-    background:url("../../images/items/pergamino_1.png");
+    background:url("../../assets/images/items/pergamino_1.png");
     background-size:100% 100%;
     background-repeat:no-repeat;
     position:relative;
