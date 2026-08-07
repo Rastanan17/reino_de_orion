@@ -25,7 +25,7 @@ async function entrarAlReino(){
     actualizarPerfil();
     revisarCompensacion();
 
-    await cargarMisiones();
+    await iniciarSistemaMisiones();
     await cargarMapa();
     await cargarRecompensas();
     await cargarSistemaPergaminos();

@@ -15,7 +15,7 @@ function actualizarPerfil() {
     // Nombre
     document.getElementById("playerName").textContent = jugador.nombre;
     // Avatar
-    document.getElementById("playerAvatar").src = "../../../images/characters/" + jugador.avatar;
+    document.getElementById("playerAvatar").src = jugador.avatar;
     // Rango
     document.getElementById("playerRank").textContent = jugador.rango;
     // Nivel
