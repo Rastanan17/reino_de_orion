@@ -3,6 +3,7 @@
 // =======================================
 // Avatar seleccionado por defecto
 let avatarSeleccionado = "kingdom/portal/avatars/explorer.jpg";
+let musicaPortal = null;
 // =======================================
 // PORTAL
 // =======================================
@@ -22,6 +23,18 @@ function mostrarPortal(){
     if(perfil){
         perfil.style.display="none";
     }
+    // =======================================
+    // MÚSICA DEL PORTAL
+    // =======================================
+    if(!musicaPortal){
+        musicaPortal = new Audio("assets/sounds/ambient_portal.mp3");
+        musicaPortal.loop = true;
+        musicaPortal.volume = 0.5;
+    }
+    musicaPortal.currentTime = 0;
+    musicaPortal.play().catch(error => {
+        console.log("La música del portal necesita interacción del usuario:", error);
+    });
     const content=document.getElementById("content");
     content.innerHTML=`
     <section class="portal">

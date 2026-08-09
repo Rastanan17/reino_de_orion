@@ -37,7 +37,6 @@ function mostrarSelectorPerfiles(){
         lista.appendChild(boton);
     });
 }
-
 // =======================================
 // CREAR PERFIL
 // =======================================
@@ -74,7 +73,6 @@ function crearPerfilNuevo(){
     );
     window.location.href="../../index.html";
 }
-
 // =======================================
 // CAMBIAR PERFIL DESDE EL REINO
 // =======================================
