@@ -25,7 +25,6 @@ const perfilBase = {
     pergaminos:[],
     compensacionPendiente:false
 };
-
 function crearPerfil(id,nombre,avatar){
     let perfiles = JSON.parse(
         localStorage.getItem("perfiles")
@@ -37,18 +36,15 @@ function crearPerfil(id,nombre,avatar){
         avatar
     };
     localStorage.setItem(
-        "perfiles",
-        JSON.stringify(perfiles)
+        "perfiles", JSON.stringify(perfiles)
     );
 }
-
 // =======================================
 // PERFIL ACTIVO
 // =======================================
 function obtenerPerfilActivo(){
     return localStorage.getItem("perfilActivo");
 }
-
 // ---------------------------------------
 // Cargar jugador actual
 // ---------------------------------------
@@ -62,7 +58,6 @@ function cargarJugador(){
     ) || {};
     return perfiles[id] || null;
 }
-
 // ---------------------------------------
 // Guardar jugador actual
 // ---------------------------------------
@@ -74,11 +69,9 @@ function guardarJugador(datos){
     ) || {};
     perfiles[id] = datos;
     localStorage.setItem(
-        "perfiles",
-        JSON.stringify(perfiles)
+        "perfiles", JSON.stringify(perfiles)
     );
 }
-
 // ---------------------------------------
 // Obtener rango
 // ---------------------------------------
@@ -94,8 +87,6 @@ function obtenerRango(nivel){
     if(nivel>=5) return "Explorador";
     return "Aprendiz";
 }
-
-
 // ---------------------------------------
 // Dar recompensa
 // ---------------------------------------
@@ -114,7 +105,6 @@ function sumarRecompensa(xp, oquos) {
     guardarJugador(jugador);
     actualizarPerfil();
 }
-
 // ---------------------------------------
 // Restaurar una zona del Reino
 // ---------------------------------------
@@ -125,7 +115,6 @@ function desbloquearZona(zona) {
         guardarJugador(jugador);
     }
 }
-
 // ---------------------------------------
 // Reiniciar partida
 // ---------------------------------------
@@ -133,7 +122,6 @@ function reiniciarJugador(){
     localStorage.removeItem("perfilActivo");
     location.reload();
 }
-
 // ---------------------------------------
 // Obtener fecha de hoy
 // ---------------------------------------
@@ -143,17 +131,9 @@ function obtenerFechaHoy() {
 // =======================================
 // REINICIO DE MISIONES DIARIAS
 // =======================================
-
 function reiniciarMisionesDiarias(){
-
-    localStorage.removeItem(
-        "estadoMisionesCastillo"
-    );
-
-    console.log(
-        "Misiones diarias reiniciadas"
-    );
-
+    localStorage.removeItem("estadoMisionesCastillo");
+    console.log("Misiones diarias reiniciadas");
 }
 // ---------------------------------------
 // Verificar cambio de día
@@ -168,7 +148,6 @@ function verificarNuevoDia(){
         guardarJugador(jugador);
     }
 }
-
 // =======================================
 // MAPA DEL REINO
 // =======================================
@@ -177,7 +156,6 @@ function cargarMapaGuardado() {
     if(!jugador) return null;
     return jugador.mapa || null;
 }
-
 function guardarMapa(zonas) {
     const jugador = cargarJugador();
     if(!jugador) return;

@@ -6,26 +6,19 @@ async function cargarRecompensas(){
     const respuesta = await fetch("systems/rewards/rewards.json");
     recompensas = await respuesta.json();
 }
-
 // ---------------------------------------
 // Mostrar mercado
 // ---------------------------------------
 function mostrarMercado(){
-
     const content = document.getElementById("content");
-
     content.innerHTML = `
         <button onclick="mostrarMapaReino()" class="btnVolver">
             🏰 Volver al Reino
         </button>
-
         <h2>🛒 Mercado del Reino</h2>
-
         <div id="market"></div>
     `;
-
     const market = document.getElementById("market");
-
     recompensas.forEach(item=>{
         const card = document.createElement("div");
         card.className = "mission-card";
@@ -39,14 +32,11 @@ function mostrarMercado(){
         `;
         market.appendChild(card);
     });
-
 }
-
 function comprarRecompensa(id){
     const recompensa = recompensas.find(r => r.id === id);
     mostrarPergamino(recompensa);
 }
-
 function finalizarCompra(recompensa){
     const jugador = cargarJugador();
     if(!recompensa) return;
