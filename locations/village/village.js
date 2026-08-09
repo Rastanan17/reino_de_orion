@@ -61,7 +61,7 @@ function mostrarAldea(){
 
             <div
                 class="aldea-item guardia"
-                onclick="irAlCastillo()"
+                onclick="hablarPersonaAldea()"
             >
                 <img
                     src="locations/village/images/castillo.png"
@@ -74,7 +74,7 @@ function mostrarAldea(){
 
             <div
                 class="aldea-item mapa"
-                onclick="mostrarMapaReino()"
+                onclick="irA('village', 'map', mostrarMapaReino)"
             >
                 <img
                     src="locations/village/images/mapa.png"
@@ -87,7 +87,7 @@ function mostrarAldea(){
 
             <div
                 class="aldea-item mercado"
-                onclick="entrarMercadoDesdeAldea()"
+                onclick="hablarPersonaAldea()"
             >
                 <img
                     src="locations/village/images/mercado.png"

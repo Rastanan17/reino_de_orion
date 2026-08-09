@@ -58,6 +58,17 @@ async function cargarDialogosGuardias(){
 // CASTILLO
 // =======================================
 function mostrarCastillo(){
+
+    const jugador = cargarJugador();
+
+    if (!jugador) {
+        return;
+    }
+
+    reproducirMusica(
+        "assets/sounds/ambient_castle.mp3",
+        0.35
+    );
     const content = document.getElementById("content");
     content.innerHTML = `
         <section class="castillo">
@@ -93,7 +104,7 @@ function mostrarCastillo(){
             </div>
             <div
                 class="objeto tablon"
-                onclick="mostrarTablonMisiones()"            >
+                onclick="mostrarMisionesCastillo()"            >
                 <h2 class="name">Misiones</h2>
                 <img
                     src="locations/castle/images/missions.png"
@@ -109,7 +120,7 @@ function mostrarCastillo(){
             </div>
             <div
                 class="objeto salir"
-                onclick="mostrarMapaReino()">
+                onclick="irA('castle', 'map', mostrarMapaReino)">
                 <h2 class="name">Salir</h2>
                 <img
                     src="locations/castle/images/exit.png"
